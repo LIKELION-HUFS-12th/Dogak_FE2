@@ -3,10 +3,16 @@ import * as ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import "./index.css";
 import router from "./router";
+import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    //globalStyle컴포넌트 추가 가능
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+
+{/*ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);*/}
