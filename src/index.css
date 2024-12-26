@@ -8,10 +8,12 @@
 }
  
 html, body {
+  margin: 0; 
+  padding: 0;
   width: 100vw;
   height: 100vh;
   overflow-x: hidden; /* 좌우 스크롤 제거 */
-  background-color: #cccccc; /* 외부 영역 회색 설정 */
+  background-color: #ffffff; /* 외부 영역 회색 설정 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,10 +22,10 @@ html, body {
 
 /* 콘텐츠 영역 설정 */
 #app {
-  width: 393px; /*100%로 해두면 글자 적어지면 작아져서 px로 변경했습니다*/
-  max-width: 393px; /* 피그마 페이지 기준으로 설정 */
+  width: 412px; /*100%로 해두면 글자 적어지면 작아져서 px로 변경했습니다*/
+  max-width: 412px; /* 피그마 페이지 기준으로 설정 */
   min-height: 100vh;
-  background-color:  #ffffff; /* 내부 콘텐츠 영역 배경색 -> 완전하양아니고 피그마에 f5f5라고 찍혀서 일단 그걸로 바꿧슈 */
+  background-color:  #F0EBE4; /* 내부 콘텐츠 영역 배경색 */
   overflow-x: hidden; /* 좌우 스크롤 방지 */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding-top: 1rem; /*상단 여백 : 얼만큼 줘야될지 아직 명확하지 않음 : header 완성되는거 보고 조정 필요*/
@@ -47,7 +49,7 @@ html, body {
 /* 비터치 디바이스 스타일 */
 @media (pointer: fine) and (hover: hover) {
   body {
-    background-color: #cccccc; /* 비터치 디바이스 배경색 */
+    background-color:#E1C9A9C2; /* 비터치 디바이스 배경색 */
   }
 
   #app {
