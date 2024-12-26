@@ -21,7 +21,7 @@ html, body {
 /* 콘텐츠 영역 설정 */
 #app {
   width: 393px; /*100%로 해두면 글자 적어지면 작아져서 px로 변경했습니다*/
-  max-width: 393px; /* 피그마 페이지 기준으로 설정 */ /*383->393 숫자 잘못 봤어요...)*/
+  max-width: 393px; /* 피그마 페이지 기준으로 설정 */
   min-height: 100vh;
   background-color:  #ffffff; /* 내부 콘텐츠 영역 배경색 -> 완전하양아니고 피그마에 f5f5라고 찍혀서 일단 그걸로 바꿧슈 */
   overflow-x: hidden; /* 좌우 스크롤 방지 */

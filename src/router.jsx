@@ -16,10 +16,6 @@ export default createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        path: '/',
-        element: <p>mainpage</p>
-      },
-      {
         path: '/temp',
         element: <Temp />
       }
