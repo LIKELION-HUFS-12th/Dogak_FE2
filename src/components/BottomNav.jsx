@@ -41,6 +41,7 @@ const NavBar = styled.nav`
   position: fixed;
   bottom: 0;
   width: 100%;
+  max-width: inherit; /**부모 요소 크기 넘어가지 않게 */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -58,7 +59,7 @@ const NavItem = styled(NavLink)`
   font-size: 0.8rem;
 
   &.active {
-    color: #000; /* 선택된 탭의 색상 */
+    color: #D89336; /* 선택된 탭의 색상 */
   }
 
   img {
