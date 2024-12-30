@@ -6,7 +6,7 @@
 .untouch-device {
   display: block; /* 기본적으로 표시 */
 }
- 
+
 html, body {
   margin: 0; 
   padding: 0;
