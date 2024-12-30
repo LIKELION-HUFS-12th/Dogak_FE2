@@ -1,5 +1,5 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import Temp from "./pages(temp)/temp";
+
 
 function MainLayout() {
   return (
@@ -17,7 +17,7 @@ export default createBrowserRouter([
     children: [
       {
         path: '/temp',
-        element: <Temp />
+        element: <h1>Temp</h1>
       }
     ]
   }
