@@ -5,7 +5,7 @@ import notice from '../assets/icon/notice-icon.svg'
 import board from '../assets/icon/board-icon.svg'
 import home from '../assets/icon/home-icon.svg'
 import record from '../assets/icon/record-icon.svg'
-import account from '../assets/icon/maypage-icon.svg'
+import mypage from '../assets/icon/maypage-icon.svg'
 
 //임시로 만들어만 봄봄
 function BottomNav() {
@@ -28,7 +28,7 @@ function BottomNav() {
         <span>기록</span>
       </NavItem>
       <NavItem to="/mypage">
-        <img src={account}/>
+        <img src={mypage}/>
         <span>계정</span>
       </NavItem>
     </NavBar>
@@ -45,9 +45,8 @@ const NavBar = styled.nav`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #ffffff;
-  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 0;
+  background-color: #fff;
+  /* box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); */
 `;
 
 const NavItem = styled(NavLink)`
@@ -57,9 +56,13 @@ const NavItem = styled(NavLink)`
   flex-direction: column;
   align-items: center;
   font-size: 0.8rem;
+  width: 65px;
+  padding: 0.3rem;
 
   &.active {
-    color: #D89336; /* 선택된 탭의 색상 */
+    color: #D89336;
+    background-color: #f0ebe4;
+    font-size: 1rem;
   }
 
   img {
