@@ -20,6 +20,8 @@ export default createBrowserRouter([
       {
         path: '/record',
         element: <BookSearch/>
+      },
+      {
         path: '/board',
         element: <BoardHome />
       }
