@@ -1,16 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import Temp from "./pages(temp)/temp";
 import BoardHome from "./features/board/BoardHome";
 import MainLayout from "./MainLayout";
+import BookSearch from "./features/record/pages/BookSerach";
 
-{/*function MainLayout() {
-  return (
-    <div id="app">
-      <h1>hello</h1>
-      <Outlet />
-    </div>
-  );
-}*/}
 
 export default createBrowserRouter([
   {
@@ -18,8 +10,12 @@ export default createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        path: '/temp',
-        element: <Temp />
+        path: '/record',
+        element: <BookSearch/>
+      },
+      {
+        path: '/writereview',
+        element: <h1>Not Yet</h1>
       },
       {
         path: '/board',
