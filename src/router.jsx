@@ -16,10 +16,6 @@ export default createBrowserRouter([
       {
         path: '/writereview',
         element: <h1>Not Yet</h1>
-      },
-      {
-        path: '/board',
-        element: <BoardHome />
       }
     ]
   }
