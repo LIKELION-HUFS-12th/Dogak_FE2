@@ -7,17 +7,36 @@
   display: block; /* 기본적으로 표시 */
 }
 
+@font-face {
+  font-family: 'GowunDodum';
+  src: url('./assets/font/GowunDodum-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BMJUA_ttf';
+  src: url('./assets/font/BMJUA_ttf.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* BMJUA 폰트 클래스 */
+.bmjuaclass {
+  font-family: 'BMJUA', sans-serif; 
+}
+
 html, body {
   margin: 0; 
-  padding: 0;
+  padding: 0; /*padding,margin 설정해야 모바일에서 양쪽 빈공간 안생김*/
   width: 100vw;
   height: 100vh;
   overflow-x: hidden; /* 좌우 스크롤 제거 */
-  background-color: #ffffff; /* 외부 영역 회색 설정 */
+  background-color: #ffffff; /* 외부 영역 색 설정 */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family:  sans-serif;  /* 폰트 설정*/
+  font-family: 'GowunDodum', sans-serif;  /* 폰트 설정*/
 }
 
 /* 콘텐츠 영역 설정 */
