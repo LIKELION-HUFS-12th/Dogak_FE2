@@ -22,6 +22,10 @@ export default createBrowserRouter([
         element: <BookSearch/>
       },
       {
+        path: '/writereview',
+        element: <h1>Not Yet</h1>
+      },
+      {
         path: '/board',
         element: <BoardHome />
       }

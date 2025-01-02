@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Button = styled.button`
   width: 276px;
   height: 41px;
-  margin-top: 300px;
+  margin-top: 150px;
   flex-shrink: 0;
   border-radius: 5px;
   background: #A3C2DC;
