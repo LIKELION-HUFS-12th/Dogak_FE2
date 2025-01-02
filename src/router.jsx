@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "./MainLayout";
+import BookSearch from "./features/record/pages/BookSerach";
 
 {/*function MainLayout() {
   return (
@@ -16,8 +17,8 @@ export default createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        path: '/temp',
-        element: <h1>Temp</h1>
+        path: '/record',
+        element: <BookSearch/>
       }
     ]
   }
