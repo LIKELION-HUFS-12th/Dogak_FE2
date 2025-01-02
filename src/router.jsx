@@ -1,4 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
+import Temp from "./pages(temp)/temp";
+import BoardHome from "./features/board/BoardHome";
 import MainLayout from "./MainLayout";
 
 {/*function MainLayout() {
@@ -17,7 +19,11 @@ export default createBrowserRouter([
     children: [
       {
         path: '/temp',
-        element: <h1>Temp</h1>
+        element: <Temp />
+      },
+      {
+        path: '/board',
+        element: <BoardHome />
       }
     ]
   }
