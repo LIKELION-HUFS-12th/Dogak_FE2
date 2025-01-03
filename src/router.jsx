@@ -26,14 +26,6 @@ export default createBrowserRouter([
             element: <BoardListPage />
           },
           {
-            path: 'group',
-            element: <BoardListPage />
-          },
-          {
-            path: 'review',
-            element: <BoardListPage />
-          },
-          {
             path: ':id',
             element: <p>아직 개발중</p>
           }
