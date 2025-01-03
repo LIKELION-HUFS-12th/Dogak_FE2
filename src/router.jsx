@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import BoardHome from "./features/board/BoardHome";
 import MainLayout from "./MainLayout";
 import BookSearch from "./features/record/pages/BookSerach";
-
+import BoardPage from "./features/board/BoardPage";
+import BoardList from "./features/board/pages/BoardList";
 
 export default createBrowserRouter([
   {
@@ -16,6 +16,20 @@ export default createBrowserRouter([
       {
         path: '/writereview',
         element: <h1>Not Yet</h1>
+      },
+      {
+        path: '/board',
+        element: <BoardPage />,
+        children: [
+          {
+            index: true,
+            element: <BoardList />
+          },
+          {
+            path: 'list',
+            element: <BoardList />
+          }
+        ]
       }
     ]
   }
