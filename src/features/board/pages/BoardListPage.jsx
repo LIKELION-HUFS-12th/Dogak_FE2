@@ -2,6 +2,7 @@ import React from 'react'
 import TabMenu from '../components/TabMenu';
 import BoardList from '../components/BoardList';
 import styled from 'styled-components';
+import SearchBar from '../components/SearchBar';
 
 const ListPageBox = styled.div`
   display: flex;
@@ -17,6 +18,7 @@ function BoardListPage() {
   return (
     <ListPageBox>
       <TabMenu/>
+      <SearchBar/>
       <BoardList/>
     </ListPageBox>
   )

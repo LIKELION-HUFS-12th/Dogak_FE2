@@ -39,3 +39,19 @@ export const ListTitle = styled.div`
   justify-content: center;
   width: 250px;
 `
+
+export const StyledSearchBar = styled.input`
+  width: 265px;
+  height: 28px;
+  margin: 35px 0 10px;
+  border-radius: 5px;
+  border: 0.5px solid #515151;
+  background-color: #e8e4de;
+  text-align: center;
+
+  ::placeholder {
+    text-align: center;
+    color: #515151;
+    font-size: 12px;
+  }
+`
