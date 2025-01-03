@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const TabBtn = styled.button`
@@ -53,5 +54,14 @@ export const StyledSearchBar = styled.input`
     text-align: center;
     color: #515151;
     font-size: 12px;
+  }
+`
+
+export const LinkItem = styled(Link)`
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  :hover {
+    color: #e76300;
   }
 `

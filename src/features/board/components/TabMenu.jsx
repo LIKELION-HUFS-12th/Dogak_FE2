@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { TabBtn } from './BoardStyled'
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
-function TabMenu() {
-  const navigate = useNavigate();
+function TabMenu({activeTab, onTabChange}) {
+  {/*const navigate = useNavigate();
   const [ activeTab, setActiveTab ] = useState("모임");
 
   const handleTabChange = (tab) => {
@@ -14,19 +14,19 @@ function TabMenu() {
       navigate('/board/review');
     }
   }
-
+    */}
 
   return (
     <div>
       <TabBtn
       style={{backgroundColor: activeTab ==="모임" ? "#d89336" : "#d9d9d9"}}
-      onClick={() => handleTabChange("모임")}
+      onClick={() => onTabChange("모임")}
       >
         독서모임
       </TabBtn>
       <TabBtn
       style={{backgroundColor: activeTab ==="리뷰" ? "#d89336" : "#d9d9d9"}}
-      onClick={() => handleTabChange("리뷰")}
+      onClick={() => onTabChange("리뷰")}
       >
         리뷰
       </TabBtn>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import TabMenu from '../components/TabMenu';
 import BoardList from '../components/BoardList';
 import styled from 'styled-components';
@@ -14,12 +14,13 @@ const ListPageBox = styled.div`
 `
 
 function BoardListPage() {
+  const [ activeTab, setActiveTab ] = useState("모임");
 
   return (
     <ListPageBox>
-      <TabMenu/>
+      <TabMenu activeTab={activeTab} onTabChange={setActiveTab}/>
       <SearchBar/>
-      <BoardList/>
+      <BoardList tab={activeTab}/>
     </ListPageBox>
   )
 }

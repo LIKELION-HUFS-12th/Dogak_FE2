@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { ListBox, ListId, ListTitle, SingleList } from './BoardStyled';
+import { LinkItem, ListBox, ListId, ListTitle, SingleList } from './BoardStyled';
 import CountText from './CountText';
 
-function BoardList() {
-  const { tab } = useParams();
+function BoardList({tab}) {
   const [ posts, setPosts ] = useState([
     {
       "id" : 9,
@@ -41,7 +39,7 @@ function BoardList() {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        const endpoint = tab === "review" ? "/reviewboard" : "groupboard"; //url에 따라 api 결정정
+        const endpoint = tab === "리뷰뷰" ? "/reviewboard" : "groupboard"; //url에 따라 api 결정
         const response = await fetch(endpoint) //api불러오기
         const data = await response.json();
         setPosts(data);
@@ -74,11 +72,9 @@ function BoardList() {
         {posts.map((post) => (
           <SingleList key={post.id}>
             <ListId>{post.id}</ListId>
-            <CountText post={post}/>
-            {/* <ListTitle>
-              <h3>[{post.book_title}]</h3>
-              <h3>{post.group_name}</h3>
-            </ListTitle> */}
+            <LinkItem to={`${post.id}`}>
+              <CountText post={post}/>
+            </LinkItem>
             <span>{post.user}</span>
             <span>{post.meeting_type}</span>
           </SingleList>
