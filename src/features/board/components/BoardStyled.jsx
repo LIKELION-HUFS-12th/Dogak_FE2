@@ -12,7 +12,12 @@ export const TabBtn = styled.button`
 `
 
 export const ListBox = styled.ul`
+  padding: 0;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `
 
 export const SingleList = styled.li`
@@ -64,4 +69,20 @@ export const LinkItem = styled(Link)`
   :hover {
     color: #e76300;
   }
+`
+
+export const Hr = styled.hr`
+  width: 90%;
+  margin: 0;
+  padding: 0;
+  border: 0.1px solid #432d2d;
+`
+
+export const SmallBtn = styled.button`
+  font-size: 11px;
+  padding: 8px 15px;
+  color: #fff;
+  background-color: ${(props) => props.color || "#432d2d"};
+  border: none;
+  border-radius: 5px;
 `

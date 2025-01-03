@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { LinkItem, ListBox, ListId, ListTitle, SingleList } from './BoardStyled';
+import { Hr, LinkItem, ListBox, ListId, ListTitle, SingleList } from './BoardStyled';
 import CountText from './CountText';
 
 function BoardList({tab}) {
@@ -60,6 +60,7 @@ function BoardList({tab}) {
   return (
     <>
       <ListBox>
+        <Hr/>
         <SingleList>
           <ListId></ListId>
             <ListTitle>
