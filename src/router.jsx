@@ -2,8 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import BookSearch from "./features/record/pages/BookSerach";
 import BoardPage from "./features/board/BoardPage";
-import MainLayout from "./MainLayout";
-import BoardList from "./features/board/pages/BoardList";
+import BoardListPage from "./features/board/pages/BoardListPage";
 
 export default createBrowserRouter([
   {
@@ -24,11 +23,15 @@ export default createBrowserRouter([
         children: [
           {
             index: true,
-            element: <BoardList />
+            element: <BoardListPage />
           },
           {
-            path: 'list',
-            element: <BoardList />
+            path: 'group',
+            element: <BoardListPage />
+          },
+          {
+            path: 'review',
+            element: <BoardListPage />
           }
         ]
       }
