@@ -3,6 +3,7 @@ import MainLayout from "./MainLayout";
 import BookSearch from "./features/record/pages/BookSerach";
 import BoardPage from "./features/board/BoardPage";
 import BoardListPage from "./features/board/pages/BoardListPage";
+import BoardDetailPage from "./features/board/pages/BoardDetailPage";
 
 export default createBrowserRouter([
   {
@@ -26,8 +27,12 @@ export default createBrowserRouter([
             element: <BoardListPage />
           },
           {
-            path: ':id',
-            element: <p>아직 개발중</p>
+            path: 'detail/:id',
+            element: <BoardDetailPage/>
+          },
+          {
+            path: 'write',
+            element: <p>게시판 쓰는 페이지</p>
           }
         ]
       }

@@ -4,6 +4,7 @@ import BoardList from '../components/BoardList';
 import styled from 'styled-components';
 import SearchBar from '../components/SearchBar';
 import { SmallBtn } from '../components/BoardStyled';
+import { useNavigate } from 'react-router-dom';
 
 const ListPageBox = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ const ButtonBox = styled.div`
 
 function BoardListPage() {
   const [ activeTab, setActiveTab ] = useState("모임");
+  const navigate = useNavigate();
 
   return (
     <ListPageBox>
@@ -29,8 +31,13 @@ function BoardListPage() {
       <SearchBar/>
       <BoardList tab={activeTab}/>
       <ButtonBox>
-        <SmallBtn color='#d89336'>내 글 보기</SmallBtn>
-        <SmallBtn>글쓰기</SmallBtn>
+        <SmallBtn
+        color='#d89336'
+        onClick={() => navigate(`/board/my`)}
+        >내 글 보기</SmallBtn>
+        <SmallBtn
+        onClick={() => navigate(`/board/write`)}
+        >글쓰기</SmallBtn>
       </ButtonBox>
     </ListPageBox>
   )

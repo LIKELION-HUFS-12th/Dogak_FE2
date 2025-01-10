@@ -39,7 +39,7 @@ function BoardList({tab}) {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        const endpoint = tab === "리뷰뷰" ? "/reviewboard" : "groupboard"; //url에 따라 api 결정
+        const endpoint = tab === "리뷰" ? "/reviewboard" : "groupboard"; //url에 따라 api 결정
         const response = await fetch(endpoint) //api불러오기
         const data = await response.json();
         setPosts(data);
@@ -73,7 +73,7 @@ function BoardList({tab}) {
         {posts.map((post) => (
           <SingleList key={post.id}>
             <ListId>{post.id}</ListId>
-            <LinkItem to={`${post.id}`}>
+            <LinkItem to={`detail/${post.id}`}>
               <CountText post={post}/>
             </LinkItem>
             <span>{post.user}</span>
