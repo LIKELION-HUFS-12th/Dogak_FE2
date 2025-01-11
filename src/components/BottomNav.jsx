@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import notice from '../assets/icon/notice-icon.svg'
 import board from '../assets/icon/board-icon.svg'
@@ -9,6 +9,17 @@ import mypage from '../assets/icon/maypage-icon.svg'
 
 //임시로 만들어만 봄봄
 function BottomNav() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  //이게 맞는 방법인지는 잘...
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === '/board') {
+      navigate('/board/group');
+    }
+  })
+
   return (
     <NavBar>
       <NavItem to="/notice" end>

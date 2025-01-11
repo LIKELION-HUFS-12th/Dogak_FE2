@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { TabBtn } from './BoardStyled'
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-function TabMenu({activeTab, onTabChange}) {
-  {/*const navigate = useNavigate();
+function TabMenu() {
+  const { tab } = useParams();
+  const navigate = useNavigate();
   const [ activeTab, setActiveTab ] = useState("모임");
+
+  //url 기반으로 확인
+  useEffect(() => {
+    if (tab === "review") {
+      setActiveTab("리뷰")
+    } else if (tab === "group") {
+      setActiveTab("모임")
+    }
+  }, [activeTab]);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -14,19 +24,18 @@ function TabMenu({activeTab, onTabChange}) {
       navigate('/board/review');
     }
   }
-    */}
 
   return (
     <div>
       <TabBtn
       style={{backgroundColor: activeTab ==="모임" ? "#d89336" : "#d9d9d9"}}
-      onClick={() => onTabChange("모임")}
+      onClick={() => handleTabChange("모임")}
       >
         독서모임
       </TabBtn>
       <TabBtn
       style={{backgroundColor: activeTab ==="리뷰" ? "#d89336" : "#d9d9d9"}}
-      onClick={() => onTabChange("리뷰")}
+      onClick={() => handleTabChange("리뷰")}
       >
         리뷰
       </TabBtn>

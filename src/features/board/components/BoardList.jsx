@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Hr, LinkItem, ListBox, ListId, ListTitle, SingleList } from './BoardStyled';
 import CountText from './CountText';
+import { useParams } from 'react-router-dom';
 
-function BoardList({tab}) {
+function BoardList() {
+  const { activeTab } = useParams();
   const [ posts, setPosts ] = useState([
     {
       "id" : 9,
@@ -35,11 +37,12 @@ function BoardList({tab}) {
   ]);
   const [ loading, setLoading ] = useState(false)
 
+
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        const endpoint = tab === "리뷰" ? "/reviewboard" : "groupboard"; //url에 따라 api 결정
+        const endpoint = activeTab === "review" ? "/reviewboard" : "groupboard"; //url에 따라 api 결정
         const response = await fetch(endpoint) //api불러오기
         const data = await response.json();
         setPosts(data);
@@ -51,7 +54,7 @@ function BoardList({tab}) {
     };
 
     fetchPosts();
-  }, [tab])
+  }, [activeTab])
 
   if (loading) {
     return <div>로딩 중...</div>;

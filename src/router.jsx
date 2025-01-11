@@ -23,16 +23,28 @@ export default createBrowserRouter([
         element: <BoardPage />,
         children: [
           {
-            index: true,
-            element: <BoardListPage />
+            path: ':activeTab',
+            element: <BoardListPage />,
           },
           {
-            path: 'detail/:id',
-            element: <BoardDetailPage/>
+            path: 'group/detail/:id',
+            element: <BoardDetailPage />,
           },
           {
-            path: 'write',
-            element: <p>게시판 쓰는 페이지</p>
+            path: 'review/detail/:id',
+            element: <BoardDetailPage />,
+          },
+          {
+            path: 'group/write',
+            element: <p>group게시판 쓰는 페이지</p>
+          },
+          {
+            path: 'review/write',
+            element: <p>review게시판 쓰는 페이지</p>
+          },
+          {
+            path: 'my',
+            element: <p>내 개시판</p>
           }
         ]
       }

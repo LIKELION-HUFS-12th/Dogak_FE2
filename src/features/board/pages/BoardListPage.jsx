@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import TabMenu from '../components/TabMenu';
 import BoardList from '../components/BoardList';
 import styled from 'styled-components';
@@ -22,21 +22,20 @@ const ButtonBox = styled.div`
 `
 
 function BoardListPage() {
-  const [ activeTab, setActiveTab ] = useState("모임");
   const navigate = useNavigate();
 
   return (
     <ListPageBox>
-      <TabMenu activeTab={activeTab} onTabChange={setActiveTab}/>
-      <SearchBar/>
-      <BoardList tab={activeTab}/>
+      <TabMenu />
+      <SearchBar />
+      <BoardList />
       <ButtonBox>
         <SmallBtn
         color='#d89336'
         onClick={() => navigate(`/board/my`)}
         >내 글 보기</SmallBtn>
         <SmallBtn
-        onClick={() => navigate(`/board/write`)}
+        onClick={() => navigate(`write`)}
         >글쓰기</SmallBtn>
       </ButtonBox>
     </ListPageBox>
