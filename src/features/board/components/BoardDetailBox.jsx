@@ -1,11 +1,21 @@
 import React, {useState} from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 
 function BoardDetailBox() {
-  const [isExpanded, setIsExpended] = useState(false)
+  const [isExpanded, setIsExpended] = useState(false);
+  const navigate = useNavigate();
+  const params = useParams();
+  const PostType = params.type;
+  const PostId = params.id;
 
   const handleToggle = () => {
     setIsExpended(!isExpanded);
   }
+
+  const handleGoBack = () => {
+    navigate(-1);
+  }
+
   return (
     <>
       <div>
@@ -29,7 +39,7 @@ function BoardDetailBox() {
           <p onClick={handleToggle}>본문 읽기</p>
         </div>
       }
-      <button>목록으로</button>
+      <button onClick={() => handleGoBack()}>돌아가기</button>
     </>
   )
 }
