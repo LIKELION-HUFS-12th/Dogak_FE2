@@ -74,34 +74,26 @@ function BookSearch() {
         />
       </header>
       <BodyContainer>
-        <div>
+        <div className="result-container">
           {currentBooks.map((book, index) => (
-            <SearchResultBlock
-              key={index}
-              image={book.image} // 기본 이미지 설정
-              title={book.title}
-              author={book.author}
-              category={book.classification} // 예시 데이터에 따라 수정
-              publisher={book.publisher}
-              pageCount={book.pageCount}
-            />
+
+              <SearchResultBlock
+                image={book.image}
+                title={book.title}
+                author={book.author}
+                category={book.classification}
+                publisher={book.publisher}
+                pageCount={book.pageCount}
+              />
           ))}
         </div>
-        
-        {/* 페이지네이션 컴포넌트 사용 */}
+
         <Pagination 
           totalItems={bookInfo.length}
           itemsPerPage={itemsPerPage}
           paginate={paginate}
           currentPage={currentPage}
         />
-
-        <Link to={{
-          pathname: "/writereview",
-          state: bookInfo // 책 정보를 state로 전달
-        }}>
-          <RecordButton />
-        </Link>
       </BodyContainer>
     </div>
   );
