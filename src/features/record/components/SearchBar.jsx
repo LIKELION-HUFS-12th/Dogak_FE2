@@ -36,11 +36,16 @@ const LinkText = styled(Link)`
   text-align: center; /* 텍스트 가운데 정렬 */
 `;
 
-function SearchBar() {
+function SearchBar({ bookName, setBookName, onSearch }) {
   return (
     <SearchContainer>
-      <Input type="text" placeholder="기록할 책 이름을 검색해주세요" />
-      <Icon src={SearchIcon} alt="검색 아이콘" />
+      <Input 
+        type="text" 
+        placeholder="기록할 책 이름을 검색해주세요" 
+        value={bookName} 
+        onChange={(e) => setBookName(e.target.value)} // 입력값을 상태로 업데이트
+      />
+      <Icon src={SearchIcon} alt="검색 아이콘" onClick={onSearch} /> {/* 아이콘 클릭 시 검색 */}
       <LinkText to="#">찾는 책이 없으신가요?</LinkText>
     </SearchContainer>
   );
