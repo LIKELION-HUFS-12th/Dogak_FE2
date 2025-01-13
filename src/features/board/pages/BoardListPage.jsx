@@ -3,17 +3,8 @@ import TabMenu from '../components/TabMenu';
 import BoardList from '../components/BoardList';
 import styled from 'styled-components';
 import SearchBar from '../components/SearchBar';
-import { SmallBtn } from '../components/BoardStyled';
+import { SmallBtn, ListPageBox } from '../components/BoardStyled';
 import { useNavigate } from 'react-router-dom';
-
-const ListPageBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-width: 412px;
-`
 
 const ButtonBox = styled.div`
   width: 90%;

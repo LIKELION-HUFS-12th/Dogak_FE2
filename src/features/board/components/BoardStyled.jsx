@@ -73,7 +73,7 @@ export const LinkItem = styled(Link)`
 
 export const Hr = styled.hr`
   width: 90%;
-  margin: 0;
+  margin: 15px 0 0;
   padding: 0;
   border: 0.1px solid #432d2d;
 `
@@ -85,4 +85,13 @@ export const SmallBtn = styled.button`
   background-color: ${(props) => props.color || "#432d2d"};
   border: none;
   border-radius: 5px;
+`
+
+export const ListPageBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 412px;
 `

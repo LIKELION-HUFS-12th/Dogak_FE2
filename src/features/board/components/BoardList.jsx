@@ -2,12 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { Hr, LinkItem, ListBox, ListId, ListTitle, SingleList } from './BoardStyled';
 import CountText from './CountText';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
+
+const api = axios.create({
+  baseURL: 'https://dogakdogak.store',
+  timeout: 5000,
+  headers: { 'Content-Type': 'application/json'},
+  withCredentials: true
+});
 
 function BoardList() {
   const { activeTab } = useParams();
   const [ posts, setPosts ] = useState([
     {
-      "id" : 9,
+      "id" : 1,
       "user" : "dogak",
       "book_title" : "백설공주에게 죽음을",
       "group_name" : "파우누스 시리즈 같이 읽어요요",
@@ -39,21 +47,21 @@ function BoardList() {
 
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    const getPosts = async () => {
       setLoading(true);
       try {
         const endpoint = activeTab === "review" ? "/reviewboard" : "groupboard"; //url에 따라 api 결정
-        const response = await fetch(endpoint) //api불러오기
-        const data = await response.json();
+        const response = await api.get(endpoint) //api불러오기
+        console.log('응답완료', response.data);
         setPosts(data);
       } catch (error) {
-        console.errer("게시글 불러오는 중 오류:", error);
+        console.error("게시글 불러오는 중 오류:", error);
       } finally {
         setLoading(false); //로딩 종료
       }
     };
 
-    fetchPosts();
+    getPosts();
   }, [activeTab])
 
   if (loading) {

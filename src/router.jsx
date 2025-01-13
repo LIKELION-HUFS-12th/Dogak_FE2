@@ -27,11 +27,7 @@ export default createBrowserRouter([
             element: <BoardListPage />,
           },
           {
-            path: 'group/detail/:id',
-            element: <BoardDetailPage />,
-          },
-          {
-            path: 'review/detail/:id',
+            path: ':type/detail/:id',
             element: <BoardDetailPage />,
           },
           {
