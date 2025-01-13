@@ -23,7 +23,7 @@ export default createBrowserRouter([
         element: <BoardPage />,
         children: [
           {
-            path: ':activeTab',
+            path: ':type',
             element: <BoardListPage />,
           },
           {
