@@ -8,6 +8,7 @@ import RecordLogo from "../components/Record_Logo";
 import SearchBar from "../components/SearchBar";
 import RecordButton from "../components/PastRecord";
 import SearchResultBlock from "../components/SearchResult";
+import Pagination from "../components/Record_Pagination";
 
 const BodyContainer = styled.div`
   display: flex;
@@ -87,14 +88,13 @@ function BookSearch() {
           ))}
         </div>
         
-        {/* 페이지네이션 */}
-        <div className="pagination">
-          {Array.from({ length: Math.ceil(bookInfo.length / itemsPerPage) }, (_, i) => (
-            <button key={i + 1} onClick={() => paginate(i + 1)}>
-              {i + 1}
-            </button>
-          ))}
-        </div>
+        {/* 페이지네이션 컴포넌트 사용 */}
+        <Pagination 
+          totalItems={bookInfo.length}
+          itemsPerPage={itemsPerPage}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
 
         <Link to={{
           pathname: "/writereview",
