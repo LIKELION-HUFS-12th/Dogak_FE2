@@ -35,7 +35,7 @@ function BoardDetailBox() {
       </PostTitleBox>
       {isExpanded
       ? <PostBodyBox>이제 글의 내용을 볼 수 있어요</PostBodyBox>
-      : <PostBodyBox center={true}>
+      : <PostBodyBox>
           <div>이 글은 스포일러를 포함하고 있습니다.</div>
           <PostSpoilerBtn onClick={handleToggle}>본문 읽기</PostSpoilerBtn>
         </PostBodyBox>

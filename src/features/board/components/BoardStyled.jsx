@@ -145,13 +145,12 @@ export const PostBodyBox = styled.div`
   margin: 25px;
   flex-direction: column;
   font-size: 14px;
-
-  align-items: ${(props) => (props.center ? 'center' : '')};
+;
 `
 
 export const PostSpoilerBtn = styled.div`
   cursor: pointer;
-  margin: 20px;
+  margin: 20px 0;
   color: #e76300;
 
   &:hover {
