@@ -24,7 +24,23 @@ const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top:450px;
+  height: 120vh;
+  overflow-y: auto; // 수직 스크롤 활성화
+  padding: 20px; // 여백 추가
 `;
+
+const Header = styled.header`
+  position: fixed;
+  top: 0; 
+  height: 160px; // 헤더 높이
+  display: flex;
+  align-items: center; 
+  justify-content: center; // 가로 가운데 정렬
+  background-color: #F0EBE4;
+  margin: 0 auto; // 자동으로 가운데 정렬
+`;
+
 
 const PageInputContainer = styled.div`
   display: flex; 
@@ -43,6 +59,37 @@ const ResultText = styled.p`
   margin-top: 20px;
   font-size: 15px; 
   font-weight: bold; 
+`;
+
+const ReviewInput = styled.textarea`
+  width: 289px; 
+  height: 53px; 
+  background-color: white; 
+  border-radius: 10px; 
+  border: none;
+  padding: 10px; 
+  resize: none; // 크기 조절 비활성화
+`;
+
+const ReviewTextarea = styled.textarea`
+  width: 289px; // 너비 설정
+  height: 169px; // 높이 설정
+  background-color: white; // 배경색
+  border-radius: 10px; // 모서리 둥글게
+  border: none; // 테두리 없애기
+  padding: 10px; // 패딩 추가
+  resize: none; // 크기 조절 비활성화
+`;
+
+const SubmitButton = styled.button`
+  width: 100px; // 너비 설정
+  height: 40px; // 높이 설정
+  border-radius: 10px; // 모서리 둥글게
+  background: rgba(67, 45, 45, 0.76); // 배경색 설정
+  color: white; // 글자 색상
+  border: none; // 테두리 없애기
+  cursor: pointer; // 마우스 커서 변경
+  margin-top: 20px; // 상단 여백 추가
 `;
 
 function ReviewWrite() {
@@ -95,9 +142,9 @@ function ReviewWrite() {
 
   return (
     <div>
-      <header>
+      <Header>
         <RecordLogo />
-      </header>
+      </Header>
       <BodyContainer>
         <BookInfo
           image={bookInfo.image}
@@ -131,14 +178,21 @@ function ReviewWrite() {
           </PageInputRow>
         </PageInputContainer>
         {result && <ResultText>{result}</ResultText>} {/* 결과 텍스트 표시 */}
-      </BodyContainer>
 
-      <form onSubmit={(e) => e.preventDefault()}>
-        <textarea placeholder="리뷰를 작성하세요..." />
-        <button type="submit">리뷰 제출</button>
-      </form>
+        {/* 기억에 남는 문장을 입력받는 창 */}
+        <h3>기억에 남는 문장</h3>
+        <ReviewInput placeholder="여기에 문장을 입력하세요..." />
+
+        {/* 리뷰 작성 공간 */}
+        <h3>리뷰 작성</h3>
+        <ReviewTextarea placeholder="리뷰를 작성하세요..." />
+
+        {/* 제출 버튼 */}
+        <SubmitButton type="submit">제출</SubmitButton>
+      </BodyContainer>
     </div>
   );
 }
 
 export default ReviewWrite;
+
