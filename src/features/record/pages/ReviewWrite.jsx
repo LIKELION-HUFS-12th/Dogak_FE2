@@ -24,7 +24,7 @@ const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top:450px;
+  margin-top: 450px;
   height: 120vh;
   overflow-y: auto; // 수직 스크롤 활성화
   padding: 20px; // 여백 추가
@@ -38,9 +38,7 @@ const Header = styled.header`
   align-items: center; 
   justify-content: center; // 가로 가운데 정렬
   background-color: #F0EBE4;
-  margin: 0 auto; // 자동으로 가운데 정렬
 `;
-
 
 const PageInputContainer = styled.div`
   display: flex; 
@@ -112,6 +110,8 @@ function ReviewWrite() {
   const [startPage, setStartPage] = useState('');
   const [endPage, setEndPage] = useState('');
   const [result, setResult] = useState('');
+  const [memorySentence, setMemorySentence] = useState(''); // 기억에 남는 문장 상태 관리
+  const [review, setReview] = useState(''); // 감상 상태 관리
 
   const calculatePagesRead = (start, end) => {
     const startNum = parseInt(start, 10);
@@ -138,6 +138,24 @@ function ReviewWrite() {
       setEndPage(value);
       calculatePagesRead(startPage, value); // 끝 페이지가 변경될 때 계산
     }
+  };
+
+  const handleSubmit = () => {
+    // 유효성 검사
+    if (!startPage || !endPage || !memorySentence || !review) {
+      alert("등록 실패(임시): 페이지 수, 기억에 남는 문장, 감상이 모두 입력되어야 합니다.");
+      return;
+    }
+
+    const startNum = parseInt(startPage, 10);
+    const endNum = parseInt(endPage, 10);
+    
+    if (isNaN(startNum) || isNaN(endNum) || startNum > endNum) {
+      alert("등록 실패(임시): 유효하지 않은 페이지 범위입니다.");
+      return;
+    }
+
+    alert("작성 완료되었습니다! (임시)");
   };
 
   return (
@@ -181,18 +199,25 @@ function ReviewWrite() {
 
         {/* 기억에 남는 문장을 입력받는 창 */}
         <h3>기억에 남는 문장</h3>
-        <ReviewInput placeholder="여기에 문장을 입력하세요..." />
+        <ReviewInput 
+          placeholder="여기에 문장을 입력하세요..." 
+          value={memorySentence} 
+          onChange={(e) => setMemorySentence(e.target.value)} 
+        />
 
         {/* 리뷰 작성 공간 */}
         <h3>리뷰 작성</h3>
-        <ReviewTextarea placeholder="리뷰를 작성하세요..." />
+        <ReviewTextarea 
+          placeholder="리뷰를 작성하세요..." 
+          value={review} 
+          onChange={(e) => setReview(e.target.value)} 
+        />
 
         {/* 제출 버튼 */}
-        <SubmitButton type="submit">제출</SubmitButton>
+        <SubmitButton type="button" onClick={handleSubmit}>새기기</SubmitButton>
       </BodyContainer>
     </div>
   );
 }
 
 export default ReviewWrite;
-
