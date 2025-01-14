@@ -42,7 +42,7 @@ export default createBrowserRouter([
           },
           {
             path: 'my',
-            element: <p>내가 쓴 글</p>
+            element: <p>이 페이지는 아직 준비중입니다.</p>
           },
           {
             path: 'complete',
