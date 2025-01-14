@@ -82,7 +82,7 @@ export const SmallBtn = styled.button`
   font-size: 11px;
   padding: 8px 12px;
   color: ${(props) => props.color || "#fff"};
-  background-color: ${(props) => props.Bgcolor || "#432d2d"};
+  background-color: ${(props) => props.bgcolor || "#432d2d"};
   border: none;
   border-radius: 5px;
 `
@@ -159,4 +159,73 @@ export const PostSpoilerBtn = styled.div`
 `
 export const PostBtnBox = styled.div`
   width: 95%;
+`
+
+export const WriteBtn = styled.button`
+  width: 90px;
+  height: 40px;
+  font-size: 15px;
+  margin: 15px;
+  background-color: ${(props) => props.bgcolor || "#A3C2DC"};
+  border: none;
+  border-radius: 5px;
+`
+
+export const WriteBox = styled.div`
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  margin: 10px 0;
+
+  h4 {
+    display: flex;
+    margin: 5px 0;
+    width: 50px;
+    font-size: 13px;
+    justify-content: right;
+  }
+  
+  input {
+    width: 290px;
+  }
+`
+export const RadioBox = styled.div`
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+
+  h4 {
+    display: flex;
+    margin: 5px 0;
+    width: 50px;
+    font-size: 13px;
+    justify-content: right;
+  }
+`
+export const RadioBtnBox = styled.div`
+  display: flex;
+  width: 290px;
+  font-size: 12px;
+
+  label {
+    width: 70px;
+    display: flex;
+    align-items: center;
+  }
+  input {
+    margin: 5px 5px 5px 0;
+  }
+`
+
+export const BoardWriteBox = styled.div`
+  display: flex;
+  width: 90%;
+  margin: 20px 0;
+  textarea {
+    resize: none;
+    padding: 5px;
+  }
+  
 `

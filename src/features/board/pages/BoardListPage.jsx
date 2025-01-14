@@ -22,7 +22,7 @@ function BoardListPage() {
       <BoardList />
       <ButtonBox>
         <SmallBtn
-        Bgcolor='#d89336'
+        bgcolor='#d89336'
         onClick={() => navigate(`/board/my`)}
         >내 글 보기</SmallBtn>
         <SmallBtn

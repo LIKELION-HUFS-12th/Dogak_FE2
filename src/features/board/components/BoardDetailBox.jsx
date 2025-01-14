@@ -23,8 +23,8 @@ function BoardDetailBox() {
         <PostTitle>
           <h3>이거 원래 이럼?;;</h3>
           <div>
-            <SmallBtn color="#000" Bgcolor='#e5a34d'>수정</SmallBtn>
-            <SmallBtn color="#000" Bgcolor='#d9d9d9'>삭제</SmallBtn>
+            <SmallBtn color="#000" bgcolor='#e5a34d'>수정</SmallBtn>
+            <SmallBtn color="#000" bgcolor='#d9d9d9'>삭제</SmallBtn>
           </div>
         </PostTitle>
       
