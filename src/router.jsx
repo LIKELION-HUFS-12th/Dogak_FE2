@@ -5,6 +5,7 @@ import BoardPage from "./features/board/BoardPage";
 import BoardListPage from "./features/board/pages/BoardListPage";
 import BoardDetailPage from "./features/board/pages/BoardDetailPage";
 import BoardWritePage from "./features/board/pages/BoardWritePage";
+import CompletePage from "./features/board/pages/CompletePage";
 
 export default createBrowserRouter([
   {
@@ -41,11 +42,11 @@ export default createBrowserRouter([
           },
           {
             path: 'my',
-            element: <p>내 개시판</p>
+            element: <p>내가 쓴 글</p>
           },
           {
             path: 'complete',
-            element: <p>완료되었습니다</p>
+            element: <CompletePage/>
           }
         ]
       }
