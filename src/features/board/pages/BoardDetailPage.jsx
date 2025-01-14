@@ -9,6 +9,7 @@ function BoardDetailPage() {
       <TabMenu />
       <Hr/>
       <BoardDetailBox/>
+      <Hr/>
     </ListPageBox>
   )
 }

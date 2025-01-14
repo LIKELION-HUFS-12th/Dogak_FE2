@@ -80,9 +80,9 @@ export const Hr = styled.hr`
 
 export const SmallBtn = styled.button`
   font-size: 11px;
-  padding: 8px 15px;
-  color: #fff;
-  background-color: ${(props) => props.color || "#432d2d"};
+  padding: 8px 12px;
+  color: ${(props) => props.color || "#fff"};
+  background-color: ${(props) => props.Bgcolor || "#432d2d"};
   border: none;
   border-radius: 5px;
 `
@@ -94,4 +94,70 @@ export const ListPageBox = styled.div`
   justify-content: center;
   width: 100%;
   min-width: 412px;
+`
+
+export const PostContainer = styled.div`
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+export const PostTitleBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid 0.5px #bdbdbd;
+  padding-bottom: 10px;
+`
+
+export const PostTitle = styled.div`
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0 8px;
+
+  h3 {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  div {
+    display: flex;
+    width: 100px;
+    justify-content: space-between;
+  }
+`
+export const PostInfoBox = styled.div`
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
+  font-size: 12px;
+`
+
+export const PostBodyBox = styled.div`
+  display: flex;
+  width: 95%;
+  margin: 25px;
+  flex-direction: column;
+  font-size: 14px;
+
+  align-items: ${(props) => (props.center ? 'center' : '')};
+`
+
+export const PostSpoilerBtn = styled.div`
+  cursor: pointer;
+  margin: 20px;
+  color: #e76300;
+
+  &:hover {
+    color: #e5a34d;
+  }
+`
+export const PostBtnBox = styled.div`
+  width: 95%;
 `
