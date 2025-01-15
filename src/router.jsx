@@ -2,8 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import BookSearch from "./features/record/pages/BookSerach";
 import BoardPage from "./features/board/BoardPage";
-import MainLayout from "./MainLayout";
-import BoardList from "./features/board/pages/BoardList";
+import BoardListPage from "./features/board/pages/BoardListPage";
+import BoardDetailPage from "./features/board/pages/BoardDetailPage";
+import BoardWritePage from "./features/board/pages/BoardWritePage";
+import CompletePage from "./features/board/pages/CompletePage";
 
 export default createBrowserRouter([
   {
@@ -23,12 +25,28 @@ export default createBrowserRouter([
         element: <BoardPage />,
         children: [
           {
-            index: true,
-            element: <BoardList />
+            path: ':type',
+            element: <BoardListPage />,
           },
           {
-            path: 'list',
-            element: <BoardList />
+            path: ':type/detail/:id',
+            element: <BoardDetailPage />,
+          },
+          {
+            path: 'group/write',
+            element: <BoardWritePage />
+          },
+          {
+            path: 'review/write',
+            element: <BoardWritePage />
+          },
+          {
+            path: 'my',
+            element: <p>이 페이지는 아직 준비중입니다.</p>
+          },
+          {
+            path: 'complete',
+            element: <CompletePage/>
           }
         ]
       }
