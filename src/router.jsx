@@ -1,8 +1,13 @@
-{/*import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import BookSearch from "./features/record/pages/BookSerach";
+import ReviewWrite from "./features/record/pages/ReviewWrite";
 import BoardPage from "./features/board/BoardPage";
-import BoardList from "./features/board/pages/BoardList";
+import BoardListPage from "./features/board/pages/BoardListPage";
+import BoardDetailPage from "./features/board/pages/BoardDetailPage";
+import BoardWritePage from "./features/board/pages/BoardWritePage";
+import CompletePage from "./features/board/pages/CompletePage";
+
 
 export default createBrowserRouter([
   {
@@ -14,48 +19,39 @@ export default createBrowserRouter([
         element: <BookSearch/>
       },
       {
-        path: '/writereview',
-        element: <h1>Not Yet</h1>
+        path: '/record/writereview',
+       element: <ReviewWrite/>
       },
       {
         path: '/board',
         element: <BoardPage />,
         children: [
           {
-            index: true,
-            element: <BoardList />
+            path: ':type',
+            element: <BoardListPage />,
           },
           {
-            path: 'list', 
-            element: <BoardList />
+            path: ':type/detail/:id',
+            element: <BoardDetailPage />,
+          },
+          {
+            path: 'group/write',
+            element: <BoardWritePage />
+          },
+          {
+            path: 'review/write',
+            element: <BoardWritePage />
+          },
+          {
+            path: 'my',
+            element: <p>이 페이지는 아직 준비중입니다.</p>
+          },
+          {
+            path: 'complete',
+            element: <CompletePage/>
           }
         ]
       }
     ]
   }
-]);*/}
-
-import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "./MainLayout";
-import BookSearch from "./features/record/pages/BookSerach";
-//import BoardPage from "./features/board/BoardPage";
-//import BoardList from "./features/board/pages/BoardList";
-import ReviewWrite from "./features/record/pages/ReviewWrite";
-
-export default createBrowserRouter([
-  {
-    path: '/',
-    element: <MainLayout />,
-    children: [
-      {
-        path: '/record',
-        element: <BookSearch/>
-      },
-      {
-        path: '/writereview',
-        element: <ReviewWrite/>
-      }
-        ]
-      }
-
 ]);

@@ -71,7 +71,7 @@ function SearchResultBlock({ image, title, author, category, publisher, pageCoun
         <PageCount>총 페이지 수: {pageCount}</PageCount>
       </InfoContainer>
       <SelectButton as = {Link} to={{
-        pathname: "/writereview",
+        pathname: "/record/writereview",
         state: { image, title, author, category, publisher, pageCount } // 정보 전달
       }}>
         선택하기
