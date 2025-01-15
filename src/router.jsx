@@ -1,12 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import BookSearch from "./features/record/pages/BookSerach";
+import ReviewWrite from "./features/record/pages/ReviewWrite";
 import BoardPage from "./features/board/BoardPage";
 import BoardListPage from "./features/board/pages/BoardListPage";
 import BoardDetailPage from "./features/board/pages/BoardDetailPage";
 import BoardWritePage from "./features/board/pages/BoardWritePage";
 import CompletePage from "./features/board/pages/CompletePage";
 import LoginPage from "./features/auth/login/LoginPage";
+
 
 export default createBrowserRouter([
   {
@@ -30,8 +32,8 @@ export default createBrowserRouter([
         element: <BookSearch/>
       },
       {
-        path: '/writereview',
-        element: <h1>Not Yet</h1>
+        path: '/record/writereview',
+        element: <ReviewWrite/>
       },
       {
         path: '/board',

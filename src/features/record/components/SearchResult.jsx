@@ -49,7 +49,7 @@ const PageCount = styled.p`
   margin: 3px 0;
 `;
 
-const SelectButton = styled.button`
+const SelectButton = styled(Link)`
   margin-left: 10px; /* 텍스트와 간격 */
   height: 30px; /* 버튼 높이 */
 
@@ -70,9 +70,12 @@ function SearchResultBlock({ image, title, author, category, publisher, pageCoun
         <Publisher>출판사: {publisher}</Publisher>
         <PageCount>총 페이지 수: {pageCount}</PageCount>
       </InfoContainer>
-      <Link to ="/writereview">
-      <SelectButton>선택하기</SelectButton>
-      </Link>
+      <SelectButton as = {Link} to={{
+        pathname: "/record/writereview",
+        state: { image, title, author, category, publisher, pageCount } // 정보 전달
+      }}>
+        선택하기
+      </SelectButton>
     </Block>
   );
 }
