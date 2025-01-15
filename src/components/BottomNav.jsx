@@ -56,7 +56,7 @@ const NavBar = styled.nav`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #fff;
+  background-color: #f0ebe4;
   /* box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); */
 `;
 
@@ -72,7 +72,10 @@ const NavItem = styled(NavLink)`
 
   &.active {
     color: #D89336;
-    background-color: #f0ebe4;
+    border: solid 3px #D89336;
+    border-radius: 30px;
+    background-color: #fff;
+    margin-bottom: 10px;
     font-size: 1rem;
   }
 
