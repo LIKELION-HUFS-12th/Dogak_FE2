@@ -53,3 +53,18 @@ export const GuideBox = styled.div`
     border-radius: 10px;
   }
 `
+
+export const SignupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+export const SignupLabel = styled.label`
+  display: flex;
+`
+
+export const InputBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`

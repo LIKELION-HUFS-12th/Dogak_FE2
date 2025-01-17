@@ -8,6 +8,7 @@ import BoardDetailPage from "./features/board/pages/BoardDetailPage";
 import BoardWritePage from "./features/board/pages/BoardWritePage";
 import CompletePage from "./features/board/pages/CompletePage";
 import LoginPage from "./features/auth/login/LoginPage";
+import SignupPage from "./features/auth/signup/SignupPage";
 
 
 export default createBrowserRouter([
@@ -25,7 +26,7 @@ export default createBrowserRouter([
       },
       {
         path: '/signup',
-        element: <div>회원가입 페이지입니다</div>
+        element: <SignupPage />
       },
       {
         path: '/record',
