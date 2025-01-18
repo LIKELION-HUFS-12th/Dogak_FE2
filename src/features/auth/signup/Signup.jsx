@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { SignupContainer, InputBox, SignupBox } from '../AuthStyled'
+import { SignupContainer, SignupBox, PasswordBox, PasswordInputBox, SignupRadioBox, RadioLabel, RadioBox, SignupBtn } from '../AuthStyled'
 import api from '../api';
+import SignupTerms from './SignupTerms';
 
 function Signup() {
   const [ formData, setFormData ] = useState({
     username: "",
     password: "",
-    userid: "1",
     name: "",
     gender: "",
     age: "",
     region: "",
     email: "",
   })
+  const [ confrimPassword, setConfrimPassword ] = useState("");
+  const [ error, setError ] = useState("");
+  const [ isAgreed, setIsAgreed ] = useState(false)
+
+  const handleAgreeChange = (checked) => {
+    setIsAgreed(checked);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +31,14 @@ function Signup() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    if (!validatePassword(formData.password)) {
+      alert("비밀번호가 조건을 만족하지 않습니다.")
+      return
+    } else if (error){
+      alert("비밀번호가 일치하지 않습니다.")
+      return
+    }
 
     try {
       const response = await api.post("member/register/", formData)
@@ -34,6 +48,19 @@ function Signup() {
       return error;
     }
   }
+
+  const validatePassword = (password) => {
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return passwordRegex.test(password);
+  }
+
+  useEffect(() => {
+    if (formData.password !== confrimPassword) {
+      setError("*비밀번호가 일치하지 않습니다.");
+    } else {
+      setError("")
+    }
+  }, [confrimPassword])
 
   return (
     <SignupContainer onSubmit={handleRegister}>
@@ -45,6 +72,7 @@ function Signup() {
           name='username'
           value={formData.username}
           onChange={handleChange}
+          placeholder='아이디'
           required
         />
       </SignupBox>
@@ -56,31 +84,42 @@ function Signup() {
           name='email'
           value={formData.email}
           onChange={handleChange}
+          placeholder='이메일'
           required
         />
       </SignupBox>
-      <SignupBox>
-        <label>비밀번호</label>
-        <InputBox>
+      <PasswordBox>
+        <PasswordInputBox>
+          <label>비밀번호</label>
           <input
             type="password"
             id='password'
             name='password'
             value={formData.password}
             onChange={handleChange}
+            placeholder='비밀번호'
             required
           />
-          {/* <input
+        </PasswordInputBox>
+        {!validatePassword(formData.password) && (
+          <small role='alert'>*비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 함.</small>
+        )}
+        <PasswordInputBox margin="5px">
+          <label></label>
+          <input
             type="password"
-            id='repeat-password'
-            name='repeat-password'
-            value={formData.password}
-            onChange={handleChange}
+            id='confrimPassword'
+            name='confrimPassword'
+            value={confrimPassword}
+            onChange={(e) => setConfrimPassword(e.target.value)}
+            placeholder='비밀번호 확인'
             required
-          /> */}
-          <p>*비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 함.</p>
-        </InputBox>
-      </SignupBox>
+          />
+        </PasswordInputBox>
+        {error && (
+          <small role='alert'>*비밀번호가 일치하지 않습니다.</small>
+        )}
+      </PasswordBox>
       <SignupBox>
         <label>이름</label>
         <input
@@ -89,6 +128,7 @@ function Signup() {
           name='name'
           value={formData.name}
           onChange={handleChange}
+          placeholder='이름'
           required
           />
       </SignupBox>
@@ -100,6 +140,7 @@ function Signup() {
           name='region'
           value={formData.region}
           onChange={handleChange}
+          placeholder='지역'
           required
           />
       </SignupBox>
@@ -112,43 +153,47 @@ function Signup() {
           value={formData.age}
           onChange={handleChange}
           min="0"
+          placeholder='나이'
           required
           />
       </SignupBox>
-      <div>
-        <div>성별</div>
-        <label>
-          <input
-            type="radio"
-            name="gender"
-            value="female"
-            onChange={handleChange}
-            checked={formData.gender ==="female"}
-            required
-            />여성
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="gender"
-            value="male"
-            onChange={handleChange}
-            checked={formData.gender ==="male"}
-            required
-            />남성
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="gender"
-            value="undefined"
-            onChange={handleChange}
-            checked={formData.gender ==="undefined"}
-            required
-          />선택 안함
-        </label>
-      </div>
-      <button type='submit'>회원가입</button>
+      <SignupRadioBox>
+        <RadioLabel>성별</RadioLabel>
+        <RadioBox>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              onChange={handleChange}
+              checked={formData.gender ==="female"}
+              required
+              />여성
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              onChange={handleChange}
+              checked={formData.gender ==="male"}
+              required
+              />남성
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="undefined"
+              onChange={handleChange}
+              checked={formData.gender ==="undefined"}
+              required
+            />선택 안함
+          </label>
+        </RadioBox>
+      </SignupRadioBox>
+      <SignupTerms onAgree={handleAgreeChange} />
+      <SignupBtn type='submit'>회원가입</SignupBtn>
     </SignupContainer>
   )
 }
