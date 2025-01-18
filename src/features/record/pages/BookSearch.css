@@ -6,15 +6,15 @@
   
   .header {
     position: sticky; /* 스크롤 시 상단에 고정 */
-    top: 0; /* 상단에 위치 */
+    top: 0px; /* 상단에 위치 */
     padding: 10px; /* 패딩 추가 */
+    margin-bottom: 0px;
     display: flex;
     flex-direction: column; /* 세로 방향으로 정렬 */
     align-items: center; /* 중앙 정렬 */
   }
   
 
-  
   .pagination {
     margin-top: 50px; /* 결과물과 페이지의 간격 */
     display: flex;
