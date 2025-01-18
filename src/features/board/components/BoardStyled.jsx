@@ -66,7 +66,7 @@ export const LinkItem = styled(Link)`
   cursor: pointer;
   color: #000;
   text-decoration: none;
-  :hover {
+  &:hover {
     color: #e76300;
   }
 `
