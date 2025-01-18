@@ -54,13 +54,13 @@ export const GuideBox = styled.div`
   }
 `
 
-export const SignupContainer = styled.div`
+export const SignupContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
 `
 
-export const SignupLabel = styled.label`
+export const SignupBox = styled.div`
   display: flex;
 `
 
