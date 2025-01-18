@@ -22,4 +22,5 @@ export const ThinLogo = styled.img`
 
 export const Body = styled.div`
   margin-top: 170px;
+  margin-bottom: 100px;
 `
