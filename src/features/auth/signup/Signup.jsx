@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { SignupContainer, SignupBox, PasswordBox, PasswordInputBox, SignupRadioBox, RadioLabel, RadioBox, SignupBtn } from '../AuthStyled'
+import { SignupContainer, SignupBox, PasswordBox, PasswordInputBox, SignupRadioBox, RadioLabel, RadioBox, SignupBtn, TermsAlert } from '../AuthStyled'
 import api from '../api';
 import SignupTerms from './SignupTerms';
 
@@ -37,6 +37,8 @@ function Signup() {
       return
     } else if (error){
       alert("비밀번호가 일치하지 않습니다.")
+      return
+    } else if (isAgreed) {
       return
     }
 
@@ -194,6 +196,9 @@ function Signup() {
       </SignupRadioBox>
       <SignupTerms onAgree={handleAgreeChange} />
       <SignupBtn type='submit'>회원가입</SignupBtn>
+      {!isAgreed && (
+          <TermsAlert role='alert'>*약관에 동의 후 가입하실 수 있습니다.</TermsAlert>
+        )}
     </SignupContainer>
   )
 }

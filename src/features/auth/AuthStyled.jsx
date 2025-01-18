@@ -193,3 +193,7 @@ export const CheckboxContainer = styled.div`
     margin-right: 10px;
   }
 `
+
+export const TermsAlert = styled.small`
+  color: #432d2d;
+`
