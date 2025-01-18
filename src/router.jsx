@@ -20,7 +20,7 @@ export default createBrowserRouter([
       },
       {
         path: '/record/writereview',
-       element: <ReviewWrite/>
+        element: <ReviewWrite/>
       },
       {
         path: '/board',

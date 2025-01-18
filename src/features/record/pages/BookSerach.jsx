@@ -13,10 +13,23 @@ import Pagination from "../components/Record_Pagination";
 const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 10px; /* 헤더 높이에 맞춰 여백 추가 */
+  margin-top:10px; /* 헤더 높이에 맞춰 여백 추가 */
   align-items: center;
-  height: calc(100vh - 10px); /* 전체 높이에서 헤더 높이만큼 제외 */
+  height: calc(130vh - 100px); /* 전체 높이에서 헤더 높이만큼 제외 */
   overflow-y: auto; /* 세로 스크롤 가능 */
+  padding-bottom:20px;
+`;
+
+// 버튼 스타일 정의
+const MyrecordButton = styled.button`
+  width: 276px;
+  height: 41px;
+  border-radius: 5px;
+  background-color: #A3C2DC;
+  border: none; /* 테두리 없애기 */
+  cursor: pointer; /* 커서 포인터로 변경 */
+  margin-top: 10px; /* SearchBar와 버튼 간의 간격 */
+  font-size: 16px; /* 버튼 텍스트 크기 */
 `;
 
 function BookSearch() {
@@ -24,6 +37,7 @@ function BookSearch() {
   const [bookInfo, setBookInfo] = useState([]); // 검색 결과 상태
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
   const [itemsPerPage] = useState(5); // 페이지당 아이템 수
+  const [showButton, setShowButton] = useState(true); // 버튼 표시 상태
 
   // 기본 책 정보 (어린왕자)
   const defaultBookInfo = {
@@ -63,6 +77,17 @@ function BookSearch() {
   const indexOfFirstBook = indexOfLastBook - itemsPerPage;
   const currentBooks = bookInfo.slice(indexOfFirstBook, indexOfLastBook);
 
+  // 검색창 클릭 시 버튼 숨기기
+  const handleSearchBarFocus = () => {
+    setShowButton(false);
+  };
+
+  // 검색 완료 후 버튼 보이기
+  const handleSearch = () => {
+    searchBook();
+    setShowButton(false); // 검색 후 버튼 숨기기
+  };
+
   return (
     <div className="book-search">
       <header className="header">
@@ -70,24 +95,33 @@ function BookSearch() {
         <SearchBar 
           bookName={bookName} 
           setBookName={setBookName} 
-          onSearch={searchBook} // 검색 함수 전달
+          onSearch={handleSearch} // 검색 함수 전달
+          onFocus={handleSearchBarFocus} // 검색창 포커스 시 버튼 숨기기
         />
       </header>
       <BodyContainer>
-        <div className="result-container">
-          {currentBooks.map((book, index) => (
-
-              <SearchResultBlock
-                image={book.image}
-                title={book.title}
-                author={book.author}
-                category={book.classification}
-                publisher={book.publisher}
-                pageCount={book.pageCount}
-              />
-          ))}
-        </div>
-
+        {showButton && (
+          <>
+          <h3> 또는 </h3>
+          <MyrecordButton onClick={() => alert("기록 페이지로 이동")}>
+            내가 새긴 기록 보러가기
+          </MyrecordButton>
+          </>
+        )}
+        
+        {currentBooks.map((book, index) => (
+          <SearchResultBlock
+            key={index} // 고유 키 추가
+            image={book.image}
+            title={book.title}
+            author={book.author}
+            category={book.classification}
+            publisher={book.publisher}
+            pageCount={book.pageCount}
+          />
+        ))}
+        
+        {/* Pagination을 BodyContainer 내에 위치 */}
         <Pagination 
           totalItems={bookInfo.length}
           itemsPerPage={itemsPerPage}
