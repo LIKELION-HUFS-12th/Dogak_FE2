@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import api from '../api/api';
 
 import './BookSearch.css'; // CSS 파일 임포트
@@ -103,9 +103,7 @@ function BookSearch() {
         {showButton && (
           <>
           <h3> 또는 </h3>
-          <MyrecordButton onClick={() => alert("기록 페이지로 이동")}>
-            내가 새긴 기록 보러가기
-          </MyrecordButton>
+          <RecordButton/>
           </>
         )}
         

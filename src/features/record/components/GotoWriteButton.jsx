@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Button = styled.button`
   width: 276px;
   height: 41px;
-  margin-top: 20px;
+  margin-top: 10px;
   flex-shrink: 0;
   border-radius: 5px;
   background: #A3C2DC;
@@ -16,18 +16,18 @@ const Button = styled.button`
     background: #8FA8C3;
 `;
 
-function RecordButton() {
+function GotoWriteButton() {
   const navigate = useNavigate(); // useNavigate 훅 사용
 
   const handleClick = () => {
-    navigate('/record/pastreview'); // 버튼 클릭 시 경로 변경
+    navigate('/record/writereview'); // 버튼 클릭 시 경로 변경
   };
 
   return (
     <Button onClick={handleClick}>
-      내가 새긴 기록 보러가기
+      새 기록 새기기
     </Button>
   );
 }
 
-export default RecordButton;
+export default  GotoWriteButton;

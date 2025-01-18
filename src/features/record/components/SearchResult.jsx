@@ -70,8 +70,8 @@ function SearchResultBlock({ image, title, author, category, publisher, pageCoun
         <Publisher>출판사: {publisher}</Publisher>
         <PageCount>총 페이지 수: {pageCount}</PageCount>
       </InfoContainer>
-      <SelectButton as = {Link} to={{
-        pathname: "/record/writereview",
+      <SelectButton as={Link} to={{
+        pathname:"/record/writereview", // 절대 경로로 수정
         state: { image, title, author, category, publisher, pageCount } // 정보 전달
       }}>
         선택하기
