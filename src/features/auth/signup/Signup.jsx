@@ -6,7 +6,7 @@ function Signup() {
   const [ formData, setFormData ] = useState({
     username: "",
     password: "",
-    userid: "3",
+    userid: "1",
     name: "",
     gender: "",
     age: "",
@@ -29,6 +29,7 @@ function Signup() {
     try {
       const response = await api.post("member/register/", formData)
       console.log('회원가입 성공', response.data)
+      localStorage.setItem("access", response.tokens.access)
     } catch (error) {
       return error;
     }
@@ -36,7 +37,7 @@ function Signup() {
 
   return (
     <SignupContainer onSubmit={handleRegister}>
-      <div>
+      <SignupBox>
         <label>아이디</label>
         <input
           type="text"
@@ -46,8 +47,8 @@ function Signup() {
           onChange={handleChange}
           required
         />
-      </div>
-      <div>
+      </SignupBox>
+      <SignupBox>
         <label>이메일</label>
         <input
           type="text"
@@ -57,8 +58,8 @@ function Signup() {
           onChange={handleChange}
           required
         />
-      </div>
-      <div>
+      </SignupBox>
+      <SignupBox>
         <label>비밀번호</label>
         <InputBox>
           <input
@@ -79,7 +80,7 @@ function Signup() {
           /> */}
           <p>*비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 함.</p>
         </InputBox>
-      </div>
+      </SignupBox>
       <SignupBox>
         <label>이름</label>
         <input
