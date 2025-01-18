@@ -3,12 +3,13 @@ import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import BookInfo from '../components/Review_Bookinfo'; 
 import RecordLogo from "../components/Record_Logo";
+import './BookSearch.css'; 
 
 const InputBox = styled.input`
   width: 30px;
   height: 30px;
   border-radius: 10px;
-  color: black;
+  color: black;s
   background-color: white; // 배경색 추가
   border: none;
   text-align: center; // 텍스트 가운데 정렬
@@ -20,14 +21,15 @@ const PageText = styled.span`
   font-size: 15px;
 `;
 
+
 const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 0px; /* 헤더 높이에 맞춰 여백 추가 */
+  margin-bottom: 10px;
   align-items: center;
-  margin-top: 450px;
-  height: 120vh;
-  overflow-y: auto; // 수직 스크롤 활성화
-  padding: 20px; // 여백 추가
+  height: calc(130vh - 160px); /* 전체 높이에서 헤더 높이만큼 제외 */
+  overflow-y: auto; /* 세로 스크롤 가능 */
 `;
 
 const Header = styled.header`
@@ -159,10 +161,10 @@ function ReviewWrite() {
   };
 
   return (
-    <div>
-      <Header>
-        <RecordLogo />
-      </Header>
+    <div className="book-search">
+      <header className="header">
+          <RecordLogo />
+      </header>
       <BodyContainer>
         <BookInfo
           image={bookInfo.image}

@@ -9,6 +9,7 @@ import BoardWritePage from "./features/board/pages/BoardWritePage";
 import CompletePage from "./features/board/pages/CompletePage";
 import LoginPage from "./features/auth/login/LoginPage";
 import SignupPage from "./features/auth/signup/SignupPage";
+import BookRecord from "./features/record/pages/BookRecord";
 
 
 export default createBrowserRouter([
@@ -30,11 +31,14 @@ export default createBrowserRouter([
       },
       {
         path: '/record',
-        element: <BookSearch/>
-      },
+        element: <BookSearch/>},
       {
         path: '/record/writereview',
         element: <ReviewWrite/>
+      }, 
+      {
+        path: '/record/pastreview',
+        element: <BookRecord/>
       },
       {
         path: '/board',
