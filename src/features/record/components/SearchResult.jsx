@@ -58,7 +58,7 @@ const SelectButton = styled.button` // Link에서 button으로 변경
   cursor: pointer; 
 `;
 
-function SearchResultBlock({ image, title, author, category, publisher, pageCount, handleBookSelect }) {
+function SearchResultBlock({ id, image, title, author, category, publisher, pageCount, handleBookSelect }) {
   return (
     <Block>
       <Image src={image} alt="책 이미지" />
@@ -69,7 +69,7 @@ function SearchResultBlock({ image, title, author, category, publisher, pageCoun
         <Publisher>출판사: {publisher}</Publisher>
         <PageCount>총 페이지 수: {pageCount}</PageCount>
       </InfoContainer>
-      <SelectButton onClick={() => handleBookSelect({ image, title, author, category, publisher, pageCount })}>
+      <SelectButton onClick={() => handleBookSelect({ id, image, title, author, category, publisher, pageCount })}>
         선택하기
       </SelectButton>
     </Block>

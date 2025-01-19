@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import BookInfo from '../components/Review_Bookinfo'; 
@@ -93,13 +93,9 @@ const SubmitButton = styled.button`
   margin-top: 20px; // 상단 여백 추가
 `;
 
-
 function ReviewWrite() { 
   const location = useLocation(); // 현재 위치 정보 가져오기
   const bookInfo = location.state; // 전달된 state
-
-  // 전달받은 state 콘솔에 찍기
-  console.log("전달받은 책 정보:", bookInfo);
 
   // bookInfo가 없으면 기본값 설정
   if (!bookInfo) {
@@ -115,6 +111,11 @@ function ReviewWrite() {
   const [result, setResult] = useState('');
   const [memorySentence, setMemorySentence] = useState('');
   const [review, setReview] = useState('');
+
+  // 컴포넌트가 처음 렌더링될 때 한 번만 책 정보를 콘솔에 찍기
+  useEffect(() => {
+    console.log("전달받은 책 정보:", bookInfo);
+  }, [bookInfo]);
 
   const calculatePagesRead = (start, end) => {
     const startNum = parseInt(start, 10);
@@ -158,6 +159,13 @@ function ReviewWrite() {
       return;
     }
   
+    // 로컬 스토리지에서 setpk 값 가져오기 (사용자 ID)
+    const userid_pk = localStorage.getItem('setpk');
+    console.log("로컬 스토리지에서 가져온 사용자 ID:", userid_pk);
+  
+    // bookInfo에서 책 ID 가져오기
+    const booksid_pk = bookInfo.id; // 책 ID가 bookInfo에 있다고 가정
+  
     // 요청 데이터 구성
     const requestData = {
       book_title: title,
@@ -178,9 +186,12 @@ function ReviewWrite() {
       return;
     }
   
+    // 요청 URL 구성
+    const url = `http://dogakdogak.store/bankbook/bankbook_post/${userid_pk}/${booksid_pk}/`;
+  
     // API 요청
     try {
-      const response = await api.post(`bankbook/bankbook_post/`, requestData, {
+      const response = await api.post(url, requestData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -194,8 +205,6 @@ function ReviewWrite() {
       alert("등록 실패: 서버 오류입니다.");
     }
   };
-  
-  
   
   return (
     <div className="book-search">

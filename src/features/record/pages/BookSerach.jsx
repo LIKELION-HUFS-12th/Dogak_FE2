@@ -19,7 +19,6 @@ const BodyContainer = styled.div`
 `;
 
 
-
 function BookSearch() {
   const navigate = useNavigate(); // useNavigate 훅 사용
   const [bookName, setBookName] = useState('');
@@ -93,16 +92,17 @@ function BookSearch() {
         {loading ? <p>로딩 중...</p> : errorMessage ? (
           <p className="error-message">{errorMessage}</p>
         ) : (
-          currentBooks.map((book, index) => (
+          currentBooks.map((book) => (
             <SearchResultBlock
-              key={index}
-              image={book.image}
+              key={book.id} // key를 id로 변경
+              id = {book.id}
+              image={book.image_url} // image_url로 변경
               title={book.title}
               author={book.author}
               category={book.classification}
               publisher={book.publisher}
-              pageCount={book.pageCount}
-              handleBookSelect={handleBookSelect} // handleBookSelect 전달// 클릭 시 책 정보 전달
+              pageCount={book.pageCount} // pageCount를 설정할 경우, 데이터가 없으니 수정 필요
+              handleBookSelect={handleBookSelect} // handleBookSelect 전달
             />
           ))
         )}
