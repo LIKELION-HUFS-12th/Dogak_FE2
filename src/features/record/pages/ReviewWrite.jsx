@@ -93,6 +93,7 @@ const SubmitButton = styled.button`
   margin-top: 20px; // 상단 여백 추가
 `;
 
+
 function ReviewWrite() { 
   const location = useLocation(); // 현재 위치 정보 가져오기
   const bookInfo = location.state; // 전달된 state
@@ -108,17 +109,6 @@ function ReviewWrite() {
   }
 
   const { image, title, author, category, publisher, pageCount } = bookInfo;
-
-  const hardcodedBookInfo = {
-    image: "아직안정한한image.jpg",
-    title: "로딩안됨: 하늘과 바람과 별과 시",
-    author: "윤동주",
-    category: "문학(800)",
-    publisher: "한빛미디어",
-    pageCount: "280",
-  };
-
-  const finalBookInfo = title ? { image, title, author, category, publisher, pageCount } : hardcodedBookInfo;
 
   const [startPage, setStartPage] = useState('');
   const [endPage, setEndPage] = useState('');
@@ -152,48 +142,61 @@ function ReviewWrite() {
       calculatePagesRead(startPage, value);
     }
   };
-
+  
   const handleSubmit = async () => {
+    // 입력값 검증
     if (!startPage || !endPage || !memorySentence || !review) {
       alert("등록 실패: 페이지 수, 기억에 남는 문장, 감상이 모두 입력되어야 합니다.");
       return;
     }
-
+  
     const startNum = parseInt(startPage, 10);
     const endNum = parseInt(endPage, 10);
-    
+  
     if (isNaN(startNum) || isNaN(endNum) || startNum > endNum) {
       alert("등록 실패: 유효하지 않은 페이지 범위입니다.");
       return;
     }
-
-    const userId = 3; // 예시로 고정된 사용자 ID
-    const bookId = 1; // 예시로 고정된 책 ID
-
+  
+    // 요청 데이터 구성
     const requestData = {
-      book_title: bookInfo.title,
+      book_title: title,
       sentence: memorySentence,
       body: review,
       start_date: new Date().toISOString().split('T')[0], // 오늘 날짜
       start_page: startNum,
       end_page: endNum,
     };
-
+  
+    // 로컬 스토리지에서 토큰 가져오기
+    const token = localStorage.getItem('access_token');
+    console.log("로컬 스토리지에서 가져온 토큰:", token);
+  
+    if (!token) {
+      console.error("토큰이 존재하지 않습니다.");
+      alert("토큰이 존재하지 않습니다. 로그인이 필요합니다.");
+      return;
+    }
+  
+    // API 요청
     try {
-      const response = await api.post(`bankbook/bankbook_post/${userId}/${bookId}/`, requestData, {
+      const response = await api.post(`bankbook/bankbook_post/`, requestData, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`, // 로컬스토리지에서 토큰 가져오기
+          Authorization: `Bearer ${token}`,
         },
       });
+      console.log("API 응답:", response);
       if (response.status === 201) {
         alert("작성 완료되었습니다!");
       }
     } catch (error) {
-      console.error('Error submitting review:', error);
+      console.error('Error submitting review:', error.response ? error.response.data : error.message);
       alert("등록 실패: 서버 오류입니다.");
     }
   };
-
+  
+  
+  
   return (
     <div className="book-search">
       <header className="header">
