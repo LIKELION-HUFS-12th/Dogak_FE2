@@ -164,6 +164,11 @@ export const BooksContainer = styled.div`
   width: 350px;
   justify-content: space-between;
 
+  img:hover {
+    height: 240px;
+    transition: 0.3s;
+  }
+
   img {
     width: auto;
     height: 230px;
