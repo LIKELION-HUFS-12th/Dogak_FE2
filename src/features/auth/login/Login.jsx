@@ -20,6 +20,7 @@ function Login() {
       console.log('로그인 성공', response.data)
 
       localStorage.setItem("access", response.data.access)
+      localStorage.setItem("setpk", response.data.user.id)
       setUsername('')
       setPassword('')
       
