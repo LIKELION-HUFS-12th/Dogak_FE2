@@ -75,7 +75,7 @@ export default createBrowserRouter([
     ]
   },
   {
-    path: 'start',
+    path: 'welcome',
     element: <OnboardingPage/>
   }
 ]);
