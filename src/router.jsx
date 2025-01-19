@@ -20,7 +20,7 @@ export default createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        index: true,
+        path: 'home',
         element: <HomePage/>,
       },
       {
