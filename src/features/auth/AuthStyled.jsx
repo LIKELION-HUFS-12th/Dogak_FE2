@@ -59,6 +59,7 @@ export const SignupContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 100px;
 `
 
 export const SignupBox = styled.div`
@@ -99,7 +100,6 @@ export const PasswordBox = styled.div`
 
 export const PasswordInputBox = styled.div`
   display: flex;
-  margin-top: ${(props) => props.margin || ""};
 
   label {
     width: 60px;

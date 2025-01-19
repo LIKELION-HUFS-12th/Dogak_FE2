@@ -64,6 +64,13 @@ export const LoginButton = styled.button`
   font-size: 35px;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #432d2ddc;
+    color: #fff;
+    transition: 0.3s;
+  }
 `
 
 export const SignupLinkBox = styled.div`
@@ -77,4 +84,22 @@ export const SignupLinkBox = styled.div`
 export const SignupLink = styled(Link)`
   color: #95928d;
   cursor: pointer;
+  text-decoration: none;
+`
+
+export const MainLinkBox = styled(Link)`
+  display: flex;
+  align-items: center;
+  width: 95%;
+  justify-content: center;
+  font-size: 20px;
+  position: fixed;
+  bottom: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #95928d;
+  
+  img {
+    margin-left: 20px;
+  }
 `
