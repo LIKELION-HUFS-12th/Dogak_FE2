@@ -182,9 +182,10 @@ function ReviewWrite() {
     if (!token) {
       console.error("토큰이 존재하지 않습니다.");
       alert("토큰이 존재하지 않습니다. 로그인이 필요합니다.");
+      // 리다이렉트 또는 다른 처리를 위해 URL로 이동
+      window.location.href = "https://dogak.netlify.app/record/writereview"; 
       return;
     }
-  
     // 요청 URL 구성
     const url = `http://dogakdogak.store/bankbook/bankbook_post/${userid_pk}/${booksid_pk}/`;
   
