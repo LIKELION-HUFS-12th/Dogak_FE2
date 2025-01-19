@@ -176,14 +176,12 @@ function ReviewWrite() {
     };
   
     // 로컬 스토리지에서 토큰 가져오기
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('access');
     console.log("로컬 스토리지에서 가져온 토큰:", token);
   
     if (!token) {
       console.error("토큰이 존재하지 않습니다.");
       alert("토큰이 존재하지 않습니다. 로그인이 필요합니다.");
-      // 리다이렉트 또는 다른 처리를 위해 URL로 이동
-      window.location.href = "https://dogak.netlify.app/record/writereview"; 
       return;
     }
     // 요청 URL 구성
