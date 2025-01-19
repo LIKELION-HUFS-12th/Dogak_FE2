@@ -26,7 +26,7 @@
   font-family: 'BMJUA', sans-serif; 
 }
 
-html, body {
+html, body, button {
   margin: 0; 
   padding: 0; /*padding,margin 설정해야 모바일에서 양쪽 빈공간 안생김*/
   width: 100vw;
