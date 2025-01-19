@@ -14,6 +14,8 @@ import OnboardingPage from "./pages/Onboarding/OnboardingPage";
 import HomePage from "./pages/home/HomePage";
 import NotLoginedHome from "./pages/home/NotLoginedHome";
 import NotLoginedLayOut from "./pages/NotLoginedLayOut";
+import NoticePage from "./features/notice/NoticePage";
+import MyPage from "./features/mypage/MyPage";
 
 
 export default createBrowserRouter([
@@ -65,6 +67,14 @@ export default createBrowserRouter([
             element: <CompletePage/>
           }
         ]
+      },
+      {
+        path: 'notice',
+        element: <NoticePage/>
+      },
+      {
+        path: 'myPage',
+        element: <MyPage />
       }
     ]
   },
