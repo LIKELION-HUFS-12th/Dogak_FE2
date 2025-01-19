@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Block = styled.div`
   width: 382px;
@@ -49,17 +49,16 @@ const PageCount = styled.p`
   margin: 3px 0;
 `;
 
-const SelectButton = styled(Link)`
+const SelectButton = styled.button` // Link에서 button으로 변경
   margin-left: 10px; /* 텍스트와 간격 */
   height: 30px; /* 버튼 높이 */
-
   border: none;
-  background:none;
+  background: none;
   color: black; 
   cursor: pointer; 
 `;
 
-function SearchResultBlock({ image, title, author, category, publisher, pageCount }) {
+function SearchResultBlock({ id, image, title, author, category, publisher, pageCount, handleBookSelect }) {
   return (
     <Block>
       <Image src={image} alt="책 이미지" />
@@ -70,10 +69,7 @@ function SearchResultBlock({ image, title, author, category, publisher, pageCoun
         <Publisher>출판사: {publisher}</Publisher>
         <PageCount>총 페이지 수: {pageCount}</PageCount>
       </InfoContainer>
-      <SelectButton as={Link} to={{
-        pathname:"/record/writereview", // 절대 경로로 수정
-        state: { image, title, author, category, publisher, pageCount } // 정보 전달
-      }}>
+      <SelectButton onClick={() => handleBookSelect({ id, image, title, author, category, publisher, pageCount })}>
         선택하기
       </SelectButton>
     </Block>

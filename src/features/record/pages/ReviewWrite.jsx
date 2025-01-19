@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import BookInfo from '../components/Review_Bookinfo'; 
 import RecordLogo from "../components/Record_Logo";
 import './BookSearch.css'; 
+import api from "../api/api"
 
 const InputBox = styled.input`
   width: 30px;
   height: 30px;
   border-radius: 10px;
-  color: black;s
-  background-color: white; // 배경색 추가
+  color: black;
+  background-color: white; 
   border: none;
-  text-align: center; // 텍스트 가운데 정렬
-  margin: 0 5px; // 입력 박스 간격
+  text-align: center; 
+  margin: 0 5px; 
 `;
 
 const PageText = styled.span`
@@ -28,8 +29,7 @@ const BodyContainer = styled.div`
   margin-top: 0px; /* 헤더 높이에 맞춰 여백 추가 */
   margin-bottom: 10px;
   align-items: center;
-  height: calc(130vh - 160px); /* 전체 높이에서 헤더 높이만큼 제외 */
-  overflow-y: auto; /* 세로 스크롤 가능 */
+
 `;
 
 const Header = styled.header`
@@ -47,7 +47,7 @@ const PageInputContainer = styled.div`
   flex-direction: column; // 세로 방향으로 정렬
   align-items: center; // 세로 가운데 정렬
   justify-content: center; // 가로 가운데 정렬
-  margin-top: 10px; // 상단 여백 추가
+  margin-top: 0px; // 상단 여백 추가
 `;
 
 const PageInputRow = styled.div`
@@ -63,7 +63,7 @@ const ResultText = styled.p`
 
 const ReviewInput = styled.textarea`
   width: 289px; 
-  height: 53px; 
+  height: 40px; 
   background-color: white; 
   border-radius: 10px; 
   border: none;
@@ -73,7 +73,7 @@ const ReviewInput = styled.textarea`
 
 const ReviewTextarea = styled.textarea`
   width: 289px; // 너비 설정
-  height: 169px; // 높이 설정
+  height: 130px; // 높이 설정
   background-color: white; // 배경색
   border-radius: 10px; // 모서리 둥글게
   border: none; // 테두리 없애기
@@ -92,34 +92,35 @@ const SubmitButton = styled.button`
   margin-top: 20px; // 상단 여백 추가
 `;
 
-function ReviewWrite() {
+function ReviewWrite() { 
   const location = useLocation(); // 현재 위치 정보 가져오기
-  const { image, title, author, category, publisher, pageCount } = location.state || {}; // 전달된 state 해체
-  console.log("오류:", location.state); // 상태 확인
+  const bookInfo = location.state; // 전달된 state
 
-  const hardcodedBookInfo = {
-    image: "아직안정한한image.jpg",
-    title: "로딩안됨: 하늘과 바람과 별과 시",
-    author: "윤동주",
-    category: "문학(800)",
-    publisher: "한빛미디어",
-    pageCount: "280",
-  };
+  // bookInfo가 없으면 기본값 설정
+  if (!bookInfo) {
+    console.error("책 정보가 전달되지 않았습니다.");
+    alert("책 정보가 전달되지 않았습니다.");
+    return null; // 추가적인 처리
+  }
 
-  const bookInfo = title ? { image, title, author, category, publisher, pageCount } : hardcodedBookInfo;
+  const { image, title, author, category, publisher, pageCount } = bookInfo;
 
-  // 읽은 쪽수 상태 관리
   const [startPage, setStartPage] = useState('');
   const [endPage, setEndPage] = useState('');
   const [result, setResult] = useState('');
-  const [memorySentence, setMemorySentence] = useState(''); // 기억에 남는 문장 상태 관리
-  const [review, setReview] = useState(''); // 감상 상태 관리
+  const [memorySentence, setMemorySentence] = useState('');
+  const [review, setReview] = useState('');
+
+  // 컴포넌트가 처음 렌더링될 때 한 번만 책 정보를 콘솔에 찍기
+  useEffect(() => {
+    console.log("전달받은 책 정보:", bookInfo);
+  }, [bookInfo]);
 
   const calculatePagesRead = (start, end) => {
     const startNum = parseInt(start, 10);
     const endNum = parseInt(end, 10);
     if (!isNaN(startNum) && !isNaN(endNum) && startNum <= endNum) {
-      const pagesRead = endNum - startNum + 1; // 읽은 페이지 수 계산
+      const pagesRead = endNum - startNum + 1;
       setResult(`${pagesRead}쪽을 읽으셨어요.`);
     } else {
       setResult('유효한 페이지 범위를 입력하세요');
@@ -130,7 +131,7 @@ function ReviewWrite() {
     const value = e.target.value;
     if (/^\d*$/.test(value)) {
       setStartPage(value);
-      calculatePagesRead(value, endPage); // 시작 페이지가 변경될 때 계산
+      calculatePagesRead(value, endPage);
     }
   };
 
@@ -138,30 +139,74 @@ function ReviewWrite() {
     const value = e.target.value;
     if (/^\d*$/.test(value)) {
       setEndPage(value);
-      calculatePagesRead(startPage, value); // 끝 페이지가 변경될 때 계산
+      calculatePagesRead(startPage, value);
     }
   };
-
-  const handleSubmit = () => {
-    // 유효성 검사
+  
+  const handleSubmit = async () => {
+    // 입력값 검증
     if (!startPage || !endPage || !memorySentence || !review) {
-      alert("등록 실패(임시): 페이지 수, 기억에 남는 문장, 감상이 모두 입력되어야 합니다.");
+      alert("등록 실패: 페이지 수, 기억에 남는 문장, 감상이 모두 입력되어야 합니다.");
       return;
     }
-
+  
     const startNum = parseInt(startPage, 10);
     const endNum = parseInt(endPage, 10);
-    
+  
     if (isNaN(startNum) || isNaN(endNum) || startNum > endNum) {
-      alert("등록 실패(임시): 유효하지 않은 페이지 범위입니다.");
+      alert("등록 실패: 유효하지 않은 페이지 범위입니다.");
       return;
     }
-
-    alert("작성 완료되었습니다! (임시)");
+  
+    // 로컬 스토리지에서 setpk 값 가져오기 (사용자 ID)
+    const userid_pk = localStorage.getItem('setpk');
+    console.log("로컬 스토리지에서 가져온 사용자 ID:", userid_pk);
+  
+    // bookInfo에서 책 ID 가져오기
+    const booksid_pk = bookInfo.id; // 책 ID가 bookInfo에 있다고 가정
+  
+    // 요청 데이터 구성
+    const requestData = {
+      book_title: title,
+      sentence: memorySentence,
+      body: review,
+      start_date: new Date().toISOString().split('T')[0], // 오늘 날짜
+      start_page: startNum,
+      end_page: endNum,
+    };
+  
+    // 로컬 스토리지에서 토큰 가져오기
+    const token = localStorage.getItem('access_token');
+    console.log("로컬 스토리지에서 가져온 토큰:", token);
+  
+    if (!token) {
+      console.error("토큰이 존재하지 않습니다.");
+      alert("토큰이 존재하지 않습니다. 로그인이 필요합니다.");
+      return;
+    }
+  
+    // 요청 URL 구성
+    const url = `http://dogakdogak.store/bankbook/bankbook_post/${userid_pk}/${booksid_pk}/`;
+  
+    // API 요청
+    try {
+      const response = await api.post(url, requestData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("API 응답:", response);
+      if (response.status === 201) {
+        alert("작성 완료되었습니다!");
+      }
+    } catch (error) {
+      console.error('Error submitting review:', error.response ? error.response.data : error.message);
+      alert("등록 실패: 서버 오류입니다.");
+    }
   };
-
+  
   return (
-    <div className="book-search">
+    <div>
       <header className="header">
           <RecordLogo />
       </header>
@@ -197,26 +242,24 @@ function ReviewWrite() {
             <PageText>p</PageText>
           </PageInputRow>
         </PageInputContainer>
-        {result && <ResultText>{result}</ResultText>} {/* 결과 텍스트 표시 */}
+        {result && <ResultText>{result}</ResultText>}
 
-        {/* 기억에 남는 문장을 입력받는 창 */}
         <h3>기억에 남는 문장</h3>
         <ReviewInput 
           placeholder="여기에 문장을 입력하세요..." 
           value={memorySentence} 
           onChange={(e) => setMemorySentence(e.target.value)} 
         />
-
-        {/* 리뷰 작성 공간 */}
+        
         <h3>리뷰 작성</h3>
         <ReviewTextarea 
           placeholder="리뷰를 작성하세요..." 
           value={review} 
           onChange={(e) => setReview(e.target.value)} 
         />
-
-        {/* 제출 버튼 */}
         <SubmitButton type="button" onClick={handleSubmit}>새기기</SubmitButton>
+
+        
       </BodyContainer>
     </div>
   );
