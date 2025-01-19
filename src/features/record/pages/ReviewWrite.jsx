@@ -176,7 +176,7 @@ function ReviewWrite() {
     };
   
     // 로컬 스토리지에서 토큰 가져오기
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('access');
     console.log("로컬 스토리지에서 가져온 토큰:", token);
   
     if (!token) {
@@ -186,7 +186,7 @@ function ReviewWrite() {
     }
   
     // 요청 URL 구성
-    const url = `http://dogakdogak.store/bankbook/bankbook_post/${userid_pk}/${booksid_pk}/`;
+    const url = `https://dogakdogak.store/bankbook/bankbook_post/${userid_pk}/${booksid_pk}/`;
   
     // API 요청
     try {
@@ -198,6 +198,8 @@ function ReviewWrite() {
       console.log("API 응답:", response);
       if (response.status === 201) {
         alert("작성 완료되었습니다!");
+        // 성공적으로 작성된 후 이동
+        window.location.href = "http://localhost:5173/record/pastreview"; // 원하는 URL로 이동
       }
     } catch (error) {
       console.error('Error submitting review:', error.response ? error.response.data : error.message);
