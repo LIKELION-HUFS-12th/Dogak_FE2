@@ -20,7 +20,7 @@ function GotoWriteButton() {
   const navigate = useNavigate(); // useNavigate 훅 사용
 
   const handleClick = () => {
-    navigate('/record/writereview'); // 버튼 클릭 시 경로 변경
+    navigate('/record'); // 버튼 클릭 시 경로 변경
   };
 
   return (
