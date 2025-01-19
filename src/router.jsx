@@ -10,6 +10,7 @@ import CompletePage from "./features/board/pages/CompletePage";
 import LoginPage from "./features/auth/login/LoginPage";
 import SignupPage from "./features/auth/signup/SignupPage";
 import BookRecord from "./features/record/pages/BookRecord";
+import OnboardingPage from "./pages/Onboarding/OnboardingPage";
 
 
 export default createBrowserRouter([
@@ -69,7 +70,12 @@ export default createBrowserRouter([
             element: <CompletePage/>
           }
         ]
-      }
+      },
+      
     ]
+  },
+  {
+    path: 'welcome',
+    element: <OnboardingPage/>
   }
 ]);
