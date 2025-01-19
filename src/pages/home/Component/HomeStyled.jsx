@@ -139,7 +139,7 @@ export const SingleBoardBox = styled.div`
   justify-content: space-between;
 
   h5 {
-    width: 140px;
+    width: 170px;
     margin: 0;
     display: flex;
     justify-content: center;
