@@ -7,10 +7,7 @@ import BoardListPage from "./features/board/pages/BoardListPage";
 import BoardDetailPage from "./features/board/pages/BoardDetailPage";
 import BoardWritePage from "./features/board/pages/BoardWritePage";
 import CompletePage from "./features/board/pages/CompletePage";
-import LoginPage from "./features/auth/login/LoginPage";
-import SignupPage from "./features/auth/signup/SignupPage";
 import BookRecord from "./features/record/pages/BookRecord";
-import OnboardingPage from "./pages/Onboarding/OnboardingPage";
 
 
 export default createBrowserRouter([
@@ -18,18 +15,6 @@ export default createBrowserRouter([
     path: '/',
     element: <MainLayout />,
     children: [
-      {
-        path: '/login',
-        element: <LoginPage />,
-      },
-      {
-        path: '/login/find',
-        element: <p>아직 준비중입니다</p>,
-      },
-      {
-        path: '/signup',
-        element: <SignupPage />
-      },
       {
         path: '/record',
         element: <BookSearch/>},
@@ -70,12 +55,7 @@ export default createBrowserRouter([
             element: <CompletePage/>
           }
         ]
-      },
-      
+      }
     ]
-  },
-  {
-    path: 'welcome',
-    element: <OnboardingPage/>
   }
 ]);
