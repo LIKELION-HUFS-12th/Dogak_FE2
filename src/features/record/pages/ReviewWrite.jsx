@@ -185,7 +185,7 @@ function ReviewWrite() {
       return;
     }
     // 요청 URL 구성
-    const url = `http://dogakdogak.store/bankbook/bankbook_post/${userid_pk}/${booksid_pk}/`;
+    const url = `https://dogakdogak.store/bankbook/bankbook_post/${userid_pk}/${booksid_pk}/`;
   
     // API 요청
     try {
