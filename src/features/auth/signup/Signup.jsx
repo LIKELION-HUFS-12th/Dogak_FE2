@@ -106,7 +106,7 @@ function Signup() {
         {!validatePassword(formData.password) && (
           <small role='alert'>*비밀번호는 영문, 숫자, 특수문자를 포함하여 8자 이상이어야 함.</small>
         )}
-        <PasswordInputBox margin="5px">
+        <PasswordInputBox>
           <label></label>
           <input
             type="password"
