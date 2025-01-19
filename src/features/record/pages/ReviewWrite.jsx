@@ -29,8 +29,7 @@ const BodyContainer = styled.div`
   margin-top: 0px; /* 헤더 높이에 맞춰 여백 추가 */
   margin-bottom: 10px;
   align-items: center;
-  height: calc(130vh - 160px); /* 전체 높이에서 헤더 높이만큼 제외 */
-  overflow-y: auto; /* 세로 스크롤 가능 */
+
 `;
 
 const Header = styled.header`
@@ -48,7 +47,7 @@ const PageInputContainer = styled.div`
   flex-direction: column; // 세로 방향으로 정렬
   align-items: center; // 세로 가운데 정렬
   justify-content: center; // 가로 가운데 정렬
-  margin-top: 10px; // 상단 여백 추가
+  margin-top: 0px; // 상단 여백 추가
 `;
 
 const PageInputRow = styled.div`
@@ -64,7 +63,7 @@ const ResultText = styled.p`
 
 const ReviewInput = styled.textarea`
   width: 289px; 
-  height: 53px; 
+  height: 40px; 
   background-color: white; 
   border-radius: 10px; 
   border: none;
@@ -74,7 +73,7 @@ const ReviewInput = styled.textarea`
 
 const ReviewTextarea = styled.textarea`
   width: 289px; // 너비 설정
-  height: 169px; // 높이 설정
+  height: 130px; // 높이 설정
   background-color: white; // 배경색
   border-radius: 10px; // 모서리 둥글게
   border: none; // 테두리 없애기
@@ -207,7 +206,7 @@ function ReviewWrite() {
   };
   
   return (
-    <div className="book-search">
+    <div>
       <header className="header">
           <RecordLogo />
       </header>
@@ -251,15 +250,16 @@ function ReviewWrite() {
           value={memorySentence} 
           onChange={(e) => setMemorySentence(e.target.value)} 
         />
-
+        
         <h3>리뷰 작성</h3>
         <ReviewTextarea 
           placeholder="리뷰를 작성하세요..." 
           value={review} 
           onChange={(e) => setReview(e.target.value)} 
         />
-
         <SubmitButton type="button" onClick={handleSubmit}>새기기</SubmitButton>
+
+        
       </BodyContainer>
     </div>
   );
