@@ -41,7 +41,7 @@ function BookRecord() {
   useEffect(() => {
     const fetchRecords = async () => {
       try {
-        const response = await api.get(`/bankbook/book_title/${userid_pk}/`);
+        const response = await api.get(`/bankbook/bankbook/${userid_pk}/`);
         if (response.status === 200) {
           setRecords(response.data.data); // 응답 데이터에서 책 목록을 설정
           console.log("받은 응답 데이터:", response.data.data); // 응답 데이터 콘솔 출력
