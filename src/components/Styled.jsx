@@ -14,7 +14,7 @@ export const Logo = styled.img`
 export const ThinLogo = styled.img`
   padding-top: 60px;
   padding-bottom: 30px;
-  height: 60px;
+  width: auto;
   top: 0;
   position: fixed;
   z-index: 100;
@@ -24,13 +24,23 @@ export const ThinLogo = styled.img`
 export const ThickLogo = styled.img`
   padding-top: 80px;
   padding-bottom: 9px;
-  height: 308px;
+  width: auto;
   top: 0;
   background-color: #f0ebe4;
 `
 
+export const NewLogo = styled.img`
+  padding-top: 30px;
+  padding-bottom: 10px;
+  width: auto;
+  top: 0;
+  position: fixed;
+  z-index: 100;
+  background-color: #f0ebe4;
+`
+
 export const Body = styled.div`
-  margin-top: 170px;
+  margin-top: 180px;
   margin-bottom: 100px;
 `
 

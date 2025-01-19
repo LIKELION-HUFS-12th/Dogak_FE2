@@ -50,10 +50,11 @@ function BoardList() {
     const getPosts = async () => {
       setLoading(true);
       try {
-        const endpoint = activeTab === "review" ? "/reviewboard" : "groupboard"; //url에 따라 api 결정
-        const response = await api.get(endpoint) //api불러오기
+        {/*const endpoint = activeTab === "review" ? "/reviewboard/" : "groupboard/"; //url에 따라 api 결정
+        const response = await api.get(endpoint) //api불러오기*/}
+        const response = await api.get('/groupboard/');
         console.log('응답완료', response.data);
-        setPosts(data);
+        setPosts(response.data);
       } catch (error) {
         console.error("게시글 불러오는 중 오류:", error);
       } finally {

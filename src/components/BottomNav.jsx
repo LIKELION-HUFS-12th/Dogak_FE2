@@ -30,7 +30,7 @@ function BottomNav() {
         <img src={board}/>
         <span>게시판</span>
       </NavItem>
-      <NavItem to="/">
+      <NavItem to="/home">
         <img src={home}/>
         <span>홈</span>
       </NavItem>
