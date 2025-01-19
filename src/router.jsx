@@ -12,6 +12,8 @@ import SignupPage from "./features/auth/signup/SignupPage";
 import BookRecord from "./features/record/pages/BookRecord";
 import OnboardingPage from "./pages/Onboarding/OnboardingPage";
 import HomePage from "./pages/home/HomePage";
+import NotLoginedHome from "./pages/home/NotLoginedHome";
+import NotLoginedLayOut from "./pages/NotLoginedLayOut";
 
 
 export default createBrowserRouter([
@@ -22,18 +24,6 @@ export default createBrowserRouter([
       {
         path: 'home',
         element: <HomePage/>,
-      },
-      {
-        path: '/login',
-        element: <LoginPage />,
-      },
-      {
-        path: '/login/find',
-        element: <p>아직 준비중입니다</p>,
-      },
-      {
-        path: '/signup',
-        element: <SignupPage />
       },
       {
         path: '/record',
@@ -81,5 +71,27 @@ export default createBrowserRouter([
   {
     path: 'welcome',
     element: <OnboardingPage/>,
+  },
+  {
+    path: 'welcome/home',
+    element: <NotLoginedHome />
+  },
+  {
+    path: '/',
+    element: <NotLoginedLayOut />,
+    children: [
+      {
+        path: '/login',
+        element: <LoginPage />,
+      },
+      {
+        path: '/login/find',
+        element: <p>아직 준비중입니다</p>,
+      },
+      {
+        path: '/signup',
+        element: <SignupPage />
+      },
+    ]
   }
 ]);

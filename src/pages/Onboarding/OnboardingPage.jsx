@@ -25,7 +25,7 @@ function OnboardingPage() {
           <SignupLink to={'/signup'}>회원가입</SignupLink>
         </SignupLinkBox>
       </div>
-      <MainLinkBox to={'/'}>
+      <MainLinkBox to={'/welcome/home'}>
         <div>로그인/회원가입 없이 둘러보기</div>
         <img src={arrow}/>
       </MainLinkBox>
