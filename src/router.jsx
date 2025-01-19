@@ -10,6 +10,8 @@ import CompletePage from "./features/board/pages/CompletePage";
 import LoginPage from "./features/auth/login/LoginPage";
 import SignupPage from "./features/auth/signup/SignupPage";
 import BookRecord from "./features/record/pages/BookRecord";
+import OnboardingPage from "./pages/Onboarding/OnboardingPage";
+import HomePage from "./pages/home/HomePage";
 
 
 export default createBrowserRouter([
@@ -17,6 +19,10 @@ export default createBrowserRouter([
     path: '/',
     element: <MainLayout />,
     children: [
+      {
+        index: true,
+        element: <HomePage/>,
+      },
       {
         path: '/login',
         element: <LoginPage />,
@@ -71,5 +77,9 @@ export default createBrowserRouter([
         ]
       }
     ]
+  },
+  {
+    path: 'welcome',
+    element: <OnboardingPage/>,
   }
 ]);
