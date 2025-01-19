@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { BoardContainer, SingleBoardBox } from './HomeStyled'
 import axios from 'axios';
 import CountTitle from './CountTitle';
+import { useNavigate } from 'react-router-dom';
 
 const api = axios.create({
   baseURL: 'https://dogakdogak.store',
@@ -13,6 +14,7 @@ const api = axios.create({
 });
 
 function BoardContent() {
+  const navigate = useNavigate();
   const [ posts, setPosts ] = useState([
     {
       "id" : 1,
@@ -77,7 +79,7 @@ function BoardContent() {
         <hr/>
         </>
       ))}
-      <button>더 보러가기</button>
+      <button onClick={() => navigate('/board/group')}>더 보러가기</button>
     </BoardContainer>
   )
 }

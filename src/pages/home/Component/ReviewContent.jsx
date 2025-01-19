@@ -1,7 +1,9 @@
 import React from 'react'
 import { BookStateBtn, ReviewBtnBox, ReviewContentBox, ReviewDateBox, ReviewInfoBox, ReviewTextBox, ReviewTitleBox } from './HomeStyled'
+import { useNavigate } from 'react-router-dom'
 
 function ReviewContent() {
+  const navigate = useNavigate();
   return (
     <ReviewContentBox>
       <ReviewTitleBox>
@@ -21,7 +23,7 @@ function ReviewContent() {
           <hr />
           <div>서시로 알게 된 윤동주 시인인데 생각보다 시가 다 이뻐서 너무 다 이뻐서 재밌게 읽었다...</div>
           <ReviewBtnBox>
-            <button>더보기</button>
+            <button onClick={() => navigate('/record')}>더보기</button>
           </ReviewBtnBox>
         </ReviewTextBox>
       </ReviewInfoBox>
