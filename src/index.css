@@ -26,7 +26,7 @@
   font-family: 'BMJUA', sans-serif; 
 }
 
-html, body, button {
+html, body {
   margin: 0; 
   padding: 0; /*padding,margin 설정해야 모바일에서 양쪽 빈공간 안생김*/
   width: 100vw;
@@ -37,6 +37,10 @@ html, body, button {
   justify-content: center;
   align-items: center;
   font-family: 'GowunDodum', sans-serif;  /* 폰트 설정*/
+}
+
+button {
+  font-family: 'GowunDodum', sans-serif;
 }
 
 /* 콘텐츠 영역 설정 */
