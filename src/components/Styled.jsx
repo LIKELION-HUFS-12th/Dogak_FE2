@@ -85,6 +85,11 @@ export const SignupLink = styled(Link)`
   color: #95928d;
   cursor: pointer;
   text-decoration: none;
+
+  &:hover {
+    color: #d89336;
+    transition: 0.3s;
+  }
 `
 
 export const MainLinkBox = styled(Link)`
@@ -101,5 +106,10 @@ export const MainLinkBox = styled(Link)`
   
   img {
     margin-left: 20px;
+  }
+
+  &:hover {
+    color: #d89336;
+    transition: 0.3s;
   }
 `
