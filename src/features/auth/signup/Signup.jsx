@@ -48,8 +48,8 @@ function Signup() {
       console.log(formData)
       const response = await api.post("/member/register/", formData)
       console.log('회원가입 성공', response.data)
-      localStorage.setItem("access", response.data.access)
-      localStorage.setItem("setpk", response.data.user.id)
+      localStorage.setItem("access", response.tocken.access)
+      localStorage.setItem("setpk", response.data.userid)
       navigate('/home', {replace: true})
     } catch (error) {
       console.log('회원가입 중 오류: ', error)
