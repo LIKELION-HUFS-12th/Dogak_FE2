@@ -12,6 +12,12 @@ import SignupPage from "./features/auth/signup/SignupPage";
 import BookRecord from "./features/record/pages/BookRecord";
 import OnboardingPage from "./pages/Onboarding/OnboardingPage";
 import HomePage from "./pages/home/HomePage";
+import NotLoginedHome from "./pages/home/NotLoginedHome";
+import NotLoginedLayOut from "./pages/NotLoginedLayOut";
+import NoticePage from "./features/notice/NoticePage";
+import MyPage from "./features/mypage/MyPage";
+import Detail1 from "./features/board/temp/Detail1";
+import Detail9 from "./features/board/temp/Detail9";
 
 
 export default createBrowserRouter([
@@ -20,20 +26,8 @@ export default createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        index: true,
+        path: 'home',
         element: <HomePage/>,
-      },
-      {
-        path: '/login',
-        element: <LoginPage />,
-      },
-      {
-        path: '/login/find',
-        element: <p>아직 준비중입니다</p>,
-      },
-      {
-        path: '/signup',
-        element: <SignupPage />
       },
       {
         path: '/record',
@@ -59,6 +53,14 @@ export default createBrowserRouter([
             element: <BoardDetailPage />,
           },
           {
+            path: ':type/detail/1',
+            element: <Detail1/>
+          },
+          {
+            path: ':type/detail/9',
+            element: <Detail9/>
+          },
+          {
             path: 'group/write',
             element: <BoardWritePage />
           },
@@ -75,11 +77,41 @@ export default createBrowserRouter([
             element: <CompletePage/>
           }
         ]
+      },
+      {
+        path: 'notice',
+        element: <NoticePage/>
+      },
+      {
+        path: 'myPage',
+        element: <MyPage />
       }
     ]
   },
   {
     path: 'welcome',
     element: <OnboardingPage/>,
+  },
+  {
+    path: 'welcome/home',
+    element: <NotLoginedHome />
+  },
+  {
+    path: '/',
+    element: <NotLoginedLayOut />,
+    children: [
+      {
+        path: '/login',
+        element: <LoginPage />,
+      },
+      {
+        path: '/login/find',
+        element: <p>아직 준비중입니다</p>,
+      },
+      {
+        path: '/signup',
+        element: <SignupPage />
+      },
+    ]
   }
 ]);

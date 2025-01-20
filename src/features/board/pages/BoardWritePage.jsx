@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Hr, ListPageBox, TabBtn } from '../components/BoardStyled';
 import { useLocation, useNavigate } from 'react-router-dom';
 import BoardWriteG from '../components/BoardWriteG';
+import BoardWriteR from '../components/BoardWriteR';
 
 function BoardWritePage() {
   const location = useLocation();
@@ -35,7 +36,8 @@ function BoardWritePage() {
         style={{backgroundColor: activeTab ==="리뷰" ? "#d89336" : "#d9d9d9"}}>리뷰 글쓰기</TabBtn>
       </div>
       <Hr/>
-      <BoardWriteG/>
+      {activeTab === '모임' ? <BoardWriteG/> : <BoardWriteR/>}
+      
     </ListPageBox>
   )
 }

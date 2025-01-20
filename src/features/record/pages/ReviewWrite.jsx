@@ -197,6 +197,8 @@ function ReviewWrite() {
       console.log("API 응답:", response);
       if (response.status === 201) {
         alert("작성 완료되었습니다!");
+        // 성공적으로 작성된 후 이동
+        window.location.href = "http://localhost:5173/record/pastreview"; // 원하는 URL로 이동
       }
     } catch (error) {
       console.error('Error submitting review:', error.response ? error.response.data : error.message);
