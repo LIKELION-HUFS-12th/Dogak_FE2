@@ -1,5 +1,5 @@
 # 독서 커뮤니티: 도각도각
-- 0120 완성 후 배포 ~ ing.
+- 0120 완성 후 배포 ~ ing
 ## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
