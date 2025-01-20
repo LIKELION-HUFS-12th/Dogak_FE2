@@ -6,7 +6,7 @@ export const HomeContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 250px;
+  margin-top: 300px;
   margin-bottom: 30px;
 
   h3 {
