@@ -12,49 +12,21 @@ const api = axios.create({
 });
 
 function BoardList() {
-  const { activeTab } = useParams();
-  const [ posts, setPosts ] = useState([
-    {
-      "id" : 1,
-      "user" : "dogak",
-      "book_title" : "백설공주에게 죽음을",
-      "group_name" : "파우누스 시리즈 같이 읽어요",
-      "meeting_type" : "온라인",
-      "start_date" : "2024-12-01",
-      "end_date" : "2024-12-31",
-      "description" : "독일 추리 소설 좋아하는 사람 모여라",
-      "meeting_days" : "월, 수, 금",
-      "created_at" : "2024-12-25",
-      "updated_at" : "2024-12-25",
-      "participants" : []
-    },
-    {
-      "id" : 9,
-      "user" : "dogak",
-      "book_title" : "죄와 벌",
-      "group_name" : "나는야 특별해지고 싶은 사람",
-      "meeting_type" : "온라인",
-      "start_date" : "2024-12-01",
-      "end_date" : "2024-12-31",
-      "description" : "독일 추리 소설 좋아하는 사람 모여라",
-      "meeting_days" : "월, 수, 금",
-      "created_at" : "2024-12-25",
-      "updated_at" : "2024-12-25",
-      "participants" : []
-    }
-  ]);
+  const params = useParams();
+  const [ posts, setPosts ] = useState([]);
   const [ loading, setLoading ] = useState(false)
 
 
+{/**
   useEffect(() => {
     const getPosts = async () => {
       setLoading(true);
       try {
-        {/*const endpoint = activeTab === "review" ? "/reviewboard/" : "groupboard/"; //url에 따라 api 결정
-        const response = await api.get(endpoint) //api불러오기*/}
+        // const endpoint = activeTab === "review" ? "/reviewboard/" : "groupboard/"; //url에 따라 api 결정
+        // const response = await api.get(endpoint) //api불러오기
         const response = await api.get('/groupboard/');
         console.log('응답완료', response.data);
-        setPosts(response.data);
+        // setPosts(response.data);
       } catch (error) {
         console.error("게시글 불러오는 중 오류:", error);
       } finally {
@@ -64,6 +36,64 @@ function BoardList() {
 
     getPosts();
   }, [activeTab])
+*/}
+
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+    const getData = async () => {
+      try {
+        if (params.type === 'review') {
+          setPosts([
+            {
+              "id" : 2,
+              "user" : "dogak",
+              "book_title" : "데미안",
+              "group_name" : "이거 원래 이럼?;;",
+              "meeting_type" : "주의",
+            },
+            {
+              "id" : 3,
+              "user" : "영가이",
+              "book_title" : "날개",
+              "group_name" : "진짜 초현실주의의 선구자라더니 현대 미술처럼 이해하기 어려운 소설",
+              "meeting_type" : "주의",
+            },
+            {
+              "id" : 4,
+              "user" : "멋사",
+              "book_title" : "사피엔스",
+              "group_name" : "유명한 과학 책이라서 어려울 줄 알았는데 재미있음",
+              "meeting_type" : "주의",
+            }
+          ]);
+        } else if (params.type === 'group') {
+          setPosts([
+            {
+              "id" : 1,
+              "user" : "dogak",
+              "book_title" : "백설공주에게 죽음을",
+              "group_name" : "파우누스 시리즈 같이 읽어요",
+              "meeting_type" : "온라인",
+            },
+            {
+              "id" : 9,
+              "user" : "dogak",
+              "book_title" : "죄와 벌",
+              "group_name" : "나는야 특별해지고 싶은 사람",
+              "meeting_type" : "온라인",
+            }
+          ]);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    getData();
+  }, [params.type])
 
   if (loading) {
     return <div>로딩 중...</div>;
