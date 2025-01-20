@@ -16,6 +16,8 @@ import NotLoginedHome from "./pages/home/NotLoginedHome";
 import NotLoginedLayOut from "./pages/NotLoginedLayOut";
 import NoticePage from "./features/notice/NoticePage";
 import MyPage from "./features/mypage/MyPage";
+import Detail1 from "./features/board/temp/Detail1";
+import Detail9 from "./features/board/temp/Detail9";
 
 
 export default createBrowserRouter([
@@ -49,6 +51,14 @@ export default createBrowserRouter([
           {
             path: ':type/detail/:id',
             element: <BoardDetailPage />,
+          },
+          {
+            path: ':type/detail/1',
+            element: <Detail1/>
+          },
+          {
+            path: ':type/detail/9',
+            element: <Detail9/>
           },
           {
             path: 'group/write',
