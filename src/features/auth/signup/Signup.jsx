@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { SignupContainer, SignupBox, PasswordBox, PasswordInputBox, SignupRadioBox, RadioLabel, RadioBox, SignupBtn, TermsAlert } from '../AuthStyled'
 import api from '../api';
 import SignupTerms from './SignupTerms';
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
+  const navigate = useNavigate();
   const [ formData, setFormData ] = useState({
     username: "",
     password: "",
@@ -38,15 +40,19 @@ function Signup() {
     } else if (error){
       alert("비밀번호가 일치하지 않습니다.")
       return
-    } else if (isAgreed) {
+    } else if (!isAgreed) {
       return
     }
 
     try {
+      console.log(formData)
       const response = await api.post("member/register/", formData)
       console.log('회원가입 성공', response.data)
-      localStorage.setItem("access", response.tokens.access)
+      localStorage.setItem("access", response.data.access)
+      navigate('/home', {replace: true})
     } catch (error) {
+      console.log('회원가입 중 오류: ', error)
+      alert('회원가입 중에 오류가 발생했습니다.')
       return error;
     }
   }
@@ -60,7 +66,7 @@ function Signup() {
     if (formData.password !== confrimPassword) {
       setError("*비밀번호가 일치하지 않습니다.");
     } else {
-      setError("")
+      setError(null)
     }
   }, [confrimPassword])
 
