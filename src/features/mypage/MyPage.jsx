@@ -58,7 +58,7 @@ function MyPage() {
   const [genreRatio, setGenreRatio] = useState(null); // 장르 비율 정보를 저장할 상태
   const [monthlyReading, setMonthlyReading] = useState([]); // 월별 읽기 정보를 저장할 상태
   const userid_pk = localStorage.getItem('setpk'); // setpk 가져오기
-  
+
   // 프로필 조회 API 요청
   useEffect(() => {
     const fetchProfile = async () => {
@@ -151,7 +151,7 @@ function MyPage() {
                     <PieChart genreRatio={genreRatio.genre_ratio} />
                     <div>
                       {Object.entries(genreRatio.genre_ratio).map(([genre, ratio]) => (
-                        <p key={genre}>{genre}: {Math.round(ratio * readingInfo.bankbook_count)}</p>
+                        <p key={genre}>{genre}: {Math.round(ratio * readingInfo.bankbook_count)}권</p>
                       ))}
                     </div>
                   </GenreRatioContainer>
