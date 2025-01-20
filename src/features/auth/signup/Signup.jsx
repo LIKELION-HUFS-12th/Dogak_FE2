@@ -27,7 +27,7 @@ function Signup() {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: name === 'age' ? Number(value) : value,
     }));
   };
 
