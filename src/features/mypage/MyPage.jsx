@@ -57,8 +57,8 @@ function MyPage() {
   const [readingInfo, setReadingInfo] = useState(null); // 읽기 정보를 저장할 상태
   const [genreRatio, setGenreRatio] = useState(null); // 장르 비율 정보를 저장할 상태
   const [monthlyReading, setMonthlyReading] = useState([]); // 월별 읽기 정보를 저장할 상태
-  const userid_pk = localStorage.getItem('setpk'); // 로컬 스토리지에서 사용자 ID를 가져옴
-
+  const userid_pk = localStorage.getItem('setpk'); // setpk 가져오기
+  
   // 프로필 조회 API 요청
   useEffect(() => {
     const fetchProfile = async () => {
@@ -99,7 +99,7 @@ function MyPage() {
 
     const fetchMonthlyReading = async () => {
       try {
-        const response = await api.get(`http://dogakdogak/bankbook/reading-count/monthly/${userid_pk}/`);
+        const response = await api.get(`/bankbook/reading-count/monthly/${userid_pk}/`);
         if (response.status === 200) {
           setMonthlyReading(response.data); // 월별 읽기 정보 설정
           console.log("받은 월별 읽기 정보:", response.data);
