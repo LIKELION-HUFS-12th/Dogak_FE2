@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginBar, LoginBtn, LoginContainer, LoginInfoBox } from '../AuthStyled';
 import api from '../api';
+import axios from 'axios';
 
 function Login() {
   const [ username, setUsername ] = useState('');

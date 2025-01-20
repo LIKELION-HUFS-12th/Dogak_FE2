@@ -59,7 +59,7 @@ export const SignupContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 200px;
 `
 
 export const SignupBox = styled.div`
