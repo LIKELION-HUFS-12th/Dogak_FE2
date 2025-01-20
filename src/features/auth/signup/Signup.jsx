@@ -51,6 +51,8 @@ function Signup() {
       localStorage.setItem("access", response.data.access)
       navigate('/home', {replace: true})
     } catch (error) {
+      console.log('회원가입 중 오류: ', error)
+      alert('회원가입 중에 오류가 발생했습니다.')
       return error;
     }
   }
