@@ -136,7 +136,7 @@ export const PostInfoBox = styled.div`
   display: flex;
   width: 95%;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 10px;
 `
 
 export const PostBodyBox = styled.div`
@@ -187,6 +187,8 @@ export const WriteBox = styled.div`
   
   input {
     width: 290px;
+    border: none;
+    border-radius: 5px;
   }
 `
 export const RadioBox = styled.div`
@@ -226,6 +228,8 @@ export const BoardWriteBox = styled.div`
   textarea {
     resize: none;
     padding: 5px;
+    border: none;
+    border-radius: 5px;
   }
   
 `

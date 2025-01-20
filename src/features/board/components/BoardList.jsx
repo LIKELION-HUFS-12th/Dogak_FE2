@@ -18,7 +18,7 @@ function BoardList() {
       "id" : 1,
       "user" : "dogak",
       "book_title" : "백설공주에게 죽음을",
-      "group_name" : "파우누스 시리즈 같이 읽어요요",
+      "group_name" : "파우누스 시리즈 같이 읽어요",
       "meeting_type" : "온라인",
       "start_date" : "2024-12-01",
       "end_date" : "2024-12-31",
