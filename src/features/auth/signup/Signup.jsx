@@ -50,6 +50,7 @@ function Signup() {
       console.log('회원가입 성공', response.data)
       // localStorage.setItem("access", response.tokens.access)
       // localStorage.setItem("setpk", response.data.userid)
+      alert('회원가입에 성공하였습니다.')
       navigate('/home', {replace: true})
     } catch (error) {
       console.log('회원가입 중 오류: ', error)

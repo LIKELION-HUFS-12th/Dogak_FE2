@@ -48,7 +48,7 @@ const DetailContainer = styled.div`
 function BookRecord() {
   const [records, setRecords] = useState([]);
   const [expandedIndex, setExpandedIndex] = useState(null); // 선택된 항목의 인덱스
-  const userid_pk = 3; // 예시로 사용자 ID를 지정 (실제 데이터에 따라 변경)
+  const userid_pk = parseInt(localStorage.getItem('setpk'), 10); // 예시로 사용자 ID를 지정 (실제 데이터에 따라 변경)
 
   // API 요청
   useEffect(() => {
